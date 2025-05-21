@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-cabin-variable antialiased bg-gray-50`}>
+      <body className={`font-cabin-variable antialiased`}>
         <ReactLenis root>{children}</ReactLenis>
       </body>
     </html>
