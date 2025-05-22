@@ -1,18 +1,13 @@
 "use client";
 
 import { name, socials } from "@/constants";
-import gsap from "gsap";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaUpwork } from "react-icons/fa6";
-import { ScrollTrigger } from "gsap/all";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, useInView } from "framer-motion";
 
 const Footer = () => {
-  const petalRefs = useRef<HTMLDivElement[]>([]);
-
   const petalCount = 7;
   const centerIndex = Math.floor(petalCount / 2);
   const angleSpread = 150;
@@ -26,97 +21,114 @@ const Footer = () => {
     return { angle, opacity };
   });
 
-  useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#footer",
-        start: "top center",
-        end: "bottom top",
-        toggleActions: "play reverse play reverse",
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.7 });
+
+  // Animation variants for petals
+  const petalVariants = {
+    hidden: { opacity: 0, scaleY: 0, rotate: 0 },
+    visible: (i: number) => ({
+      opacity: petals[i].opacity,
+      scaleY: 1,
+      rotate: petals[i].angle,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        delay: Math.abs(i - centerIndex) * 0.05,
       },
-    });
+    }),
+  };
 
-    const centerIndex = Math.floor(petalRefs.current.length / 2);
-    const animationOrder = [...Array(petalRefs.current.length).keys()].sort(
-      (a, b) => Math.abs(a - centerIndex) - Math.abs(b - centerIndex)
-    );
-
-    animationOrder.forEach((i, orderIndex) => {
-      const el = petalRefs.current[i];
-      const { angle, opacity } = petals[i];
-
-      tl.fromTo(
-        el,
-        {
-          opacity: 0,
-          scaleY: 0,
-          transform: "rotate(0deg)",
-          transformOrigin: "center bottom",
-        },
-        {
-          opacity,
-          scaleY: 1,
-          transform: `rotate(${angle}deg)`,
-          duration: 1,
-          ease: "power1.inOut",
-        },
-        orderIndex * 0.05 // 👈 starts next petal before previous ends
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+  // Animation for name letters
+  const letterVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.1,
+        ease: "easeInOut",
+      },
+    }),
+  };
 
   return (
-    <div id="footer" className="relative h-dvh overflow-hidden">
-      {/* petal */}
-      <div className="relative h-full w-full flex items-center justify-center">
+    <div id="footer" className="relative h-dvh overflow-hidden bg-white">
+      {/* Petals container */}
+      <div
+        ref={containerRef}
+        className="relative h-full w-full flex items-center justify-center"
+      >
         {petals.map((_, index) => (
-          <div
+          <motion.div
             key={index}
-            ref={(el) => {
-              if (el) petalRefs.current[index] = el;
-            }}
+            custom={index}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={petalVariants}
             className="bg-green-300 h-[70vh] md:h-[90vh] w-[280px] md:w-[280px] absolute"
             style={{
               clipPath: "ellipse(50% 50% at 50% 50%)",
               transformOrigin: "center bottom",
             }}
-          ></div>
+          />
         ))}
       </div>
 
       <div className="absolute inset-0 size-full flex flex-col justify-between">
         <div className="p-4 flex justify-between">
-          {/* name */}
+          {/* Name */}
           <div className="hidden md:flex gap-3">
             {name.map((letter, index) => (
-              <span key={index}>{letter}</span>
+              <motion.span
+                key={index}
+                custom={index}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={letterVariants}
+              >
+                {letter}
+              </motion.span>
             ))}
           </div>
 
-          {/* socials */}
+          {/* Socials */}
           <div className="flex gap-3 text-xl">
             {socials.map((social, index) => (
-              <Link
+              <motion.div
                 key={index}
-                className={`size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-110 transition-all`}
-                style={{ backgroundColor: social.color }}
-                href={social.link}
-                target="_blank"
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : { scale: 0 }}
+                transition={{
+                  delay: isInView ? 0.5 + index * 0.1 : 0,
+                  type: "spring",
+                  stiffness: 100,
+                }}
               >
-                {getSocialIcon(social.name)}
-              </Link>
+                <Link
+                  className={`size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-110 transition-all`}
+                  style={{ backgroundColor: social.color }}
+                  href={social.link}
+                  target="_blank"
+                >
+                  {getSocialIcon(social.name)}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="p-4 flex justify-between text-sm">
-          <p className="">@ 2025</p>
-          <p className="">Designed and Developed by me</p>
-        </div>
+        {/* Footer text */}
+        <motion.div
+          className="p-4 flex justify-between text-sm"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
+        >
+          <p>@ 2025</p>
+          <p>Designed and Developed by me</p>
+        </motion.div>
       </div>
     </div>
   );
