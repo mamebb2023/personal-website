@@ -58,7 +58,7 @@ const Footer = () => {
       {/* Petals container */}
       <div
         ref={containerRef}
-        className="relative h-full w-full flex items-center justify-center"
+        className="relative h-full w-full flex items-center justify-start"
       >
         {petals.map((_, index) => (
           <motion.div
@@ -121,13 +121,16 @@ const Footer = () => {
 
         {/* Footer text */}
         <motion.div
-          className="p-4 flex justify-between text-sm"
+          className="p-4 flex justify-end text-sm"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
         >
-          <p>@ 2025</p>
-          <p>Designed and Developed by me</p>
+          <p className="text-right">
+            @ 2025
+            <br />
+            Designed and Developed by me
+          </p>
         </motion.div>
       </div>
     </div>
