@@ -17,3 +17,26 @@ export const socials = [
         link: "https://www.upwork.com/freelancers/~01e488d551441650a7?mp_source=share"
     },
 ]
+
+export const links = [
+    // {
+    //   name: "Home",
+    //   href: "#home",
+    // },
+    {
+      name: "About",
+      href: "#about",
+    },
+    {
+      name: "Projects",
+      href: "#projects",
+    },
+    {
+      name: "Services",
+      href: "#blog",
+    },
+    {
+      name: "Contact",
+      href: "#contact",
+    },
+  ];

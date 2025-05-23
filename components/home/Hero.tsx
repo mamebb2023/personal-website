@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ScrollParallax } from "react-just-parallax";
 import AnimatedTitle from "../AnimatedTitle";
+import gsap from "gsap";
 
 const Hero = () => {
   const petalCount = 7;
@@ -17,6 +18,8 @@ const Hero = () => {
 
     return { angle, opacity };
   });
+
+  const petalRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Animation variants for petals
@@ -28,17 +31,47 @@ const Hero = () => {
       rotate: petals[i].angle,
       transition: {
         duration: 1,
-        ease: "easeInOut",
+        delay: 2,
+        ease: [0.33, 1, 0.68, 1],
       },
     }),
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      petalRefs.current.forEach((el, i) => {
+        if (!el) return;
+
+        const baseAngle = petals[i].angle;
+        const flickAngle = 1 + baseAngle + (Math.random() * 6 - 3); // ±3 degrees
+
+        // Wiggle to flick angle
+        gsap.to(el, {
+          rotate: flickAngle,
+          duration: 0.4,
+          ease: "power1.inOut",
+          delay: i * 0.1,
+        });
+
+        // Return to base angle
+        gsap.to(el, {
+          rotate: baseAngle,
+          duration: 0.4,
+          ease: "power1.inOut",
+          delay: 0.5 + i * 0.1,
+        });
+      });
+    }, 4000); // every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative bg-white mb-10 md:mb-20">
+    <div className="relative h-[110vh] bg-white overflow-hidden">
       {/* Petals container */}
       <div
         ref={containerRef}
-        className="absolute min-h-screen w-full flex items-center justify-center"
+        className="absolute h-dvh w-full flex items-center justify-end"
       >
         {petals.map((_, index) => (
           <motion.div
@@ -47,7 +80,10 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={petalVariants}
-            className="bg-green-300 h-[70vh] md:h-[90vh] w-[280px] md:w-[280px] absolute"
+            ref={(el) => {
+              petalRefs.current[index] = el;
+            }}
+            className="bg-green-300 h-[70vh] md:h-[90vh] w-[230px] md:w-[280px] absolute"
             style={{
               clipPath: "ellipse(50% 50% at 50% 50%)",
               transformOrigin: "center bottom",
@@ -56,12 +92,77 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="z-10 min-h-screen flex-center">
-        <ScrollParallax>
-          <h1 className="uppercase text-9xl font-bold text-center">
-            <AnimatedTitle title="Hey, I'm <br /> Mohammednur" />
-          </h1>
-        </ScrollParallax>
+      <div className="z-10 min-h-screen flex items-center px-10">
+        <div className="uppercase font-bold">
+          <div className="overflow-hidden">
+            <motion.p
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              Hey, I'm
+            </motion.p>
+          </div>
+
+          <ScrollParallax isAbsolutelyPositioned strength={0.3}>
+            <div className="overflow-hidden absolute top-1/3 right-0">
+              <motion.p
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 1,
+                  ease: [0.45, 0, 0.55, 1],
+                }}
+                className="text-6xl md:text-7xl lg:text-9xl"
+                style={{
+                  WebkitTextStroke: "1px #ABFFBE",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Mohammednur
+              </motion.p>
+            </div>
+          </ScrollParallax>
+
+          <ScrollParallax>
+            <div className="overflow-hidden">
+              <motion.p
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.6,
+                  ease: [0.45, 0, 0.55, 1],
+                }}
+                className="relative text-6xl md:text-7xl lg:text-9xl"
+              >
+                Mohammednur
+              </motion.p>
+            </div>
+          </ScrollParallax>
+
+          <ScrollParallax isAbsolutelyPositioned strength={0.4}>
+            <div className="overflow-hidden absolute bottom-[37%] -left-20">
+              <motion.p
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 1.5,
+                  ease: [0.45, 0, 0.55, 1],
+                }}
+                className="text-6xl md:text-7xl lg:text-9xl"
+                style={{
+                  WebkitTextStroke: "1px #ABFFBE",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Mohammednur
+              </motion.p>
+            </div>
+          </ScrollParallax>
+        </div>
       </div>
     </div>
   );
