@@ -3,20 +3,11 @@
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/all";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaPython,
-  FaGithub,
-} from "react-icons/fa";
-import { MouseParallax } from "react-just-parallax";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const projects = [
     {
@@ -28,16 +19,6 @@ const Projects = () => {
     { color: "#ff8c00", title: "Project 3" },
     { color: "#0000ff", title: "Project 4" },
     { color: "#8c00ff", title: "Project 5" },
-  ];
-
-  const icons = [FaReact, FaNodeJs, FaDatabase, FaPython, FaGithub];
-
-  const iconPositions = [
-    { x: "1%", y: "1%" },
-    { x: "94%", y: "1%" },
-    { x: "2%", y: "50%" },
-    { x: "1%", y: "90%" },
-    { x: "93%", y: "90%" },
   ];
 
   useEffect(() => {
@@ -60,49 +41,25 @@ const Projects = () => {
         },
       });
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top center", // When top of section hits center of screen
-        end: "bottom center", // When bottom of section hits center again
-        onEnter: () => {
-          gsap.to(iconRefs.current, {
-            color: `${projects[index].color}20`,
-            duration: 0.5,
-            ease: "power1.out",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(iconRefs.current, {
-            color: `${projects[index].color}20`,
-            duration: 0.5,
-            ease: "power1.out",
-          });
-        },
-      });
-
-      // Animate icons
-      iconRefs.current.forEach((icon, i) => {
-        if (!icon) return;
-
-        if (i === 0) {
-          // React icon rotates
-          gsap.to(icon, {
-            rotate: 360,
-            duration: 20,
-            repeat: -1,
-            ease: "linear",
-          });
-        } else {
-          // Other icons float up and down
-          gsap.to(icon, {
-            y: -10,
-            duration: 2 + i, // vary slightly for a natural feel
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-        }
-      });
+      // ScrollTrigger.create({
+      //   trigger: section,
+      //   start: "top center", // When top of section hits center of screen
+      //   end: "bottom center", // When bottom of section hits center again
+      //   onEnter: () => {
+      //     gsap.to(iconRefs.current, {
+      //       color: `${projects[index].color}20`,
+      //       duration: 0.5,
+      //       ease: "power1.out",
+      //     });
+      //   },
+      //   onEnterBack: () => {
+      //     gsap.to(iconRefs.current, {
+      //       color: `${projects[index].color}20`,
+      //       duration: 0.5,
+      //       ease: "power1.out",
+      //     });
+      //   },
+      // });
 
       gsap.fromTo(
         section,
@@ -137,29 +94,6 @@ const Projects = () => {
       </div>
 
       <div className="projects relative">
-        {/* background animated icons */}
-        <div className="sticky top-0 left-0">
-          <div className="absolute h-screen w-full overflow-hidden">
-            {icons.map((Icons, index) => (
-              <div
-                key={index}
-                ref={(el) => {
-                  iconRefs.current[index] = el;
-                }}
-                className="absolute text-7xl text-transparent"
-                style={{
-                  top: `${iconPositions[index].y}`,
-                  left: `${iconPositions[index].x}`,
-                }}
-              >
-                {/* <MouseParallax> */}
-                <Icons />
-                {/* </MouseParallax> */}
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div ref={containerRef} className="projects relative z-10">
           {projects.map((project, index) => {
             return (

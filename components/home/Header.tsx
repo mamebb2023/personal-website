@@ -17,16 +17,23 @@ const Header = () => {
   const lenis = useLenis();
 
   useEffect(() => {
+    // Avoid initial render issues
+    let newVisible = isNavVisible;
+
     if (y === 0) {
-      setIsNavVisible(true);
+      newVisible = true;
     } else if (y > lastScrollY) {
-      setIsNavVisible(false);
+      newVisible = false; // scrolling down
     } else if (y < lastScrollY) {
-      setIsNavVisible(true);
+      newVisible = true; // scrolling up
+    }
+
+    if (newVisible !== isNavVisible) {
+      setIsNavVisible(newVisible);
     }
 
     setLastScrollY(y);
-  }, [y, lastScrollY]);
+  }, [y]);
 
   useEffect(() => {
     gsap.to(navContainerRef.current, {
@@ -39,28 +46,24 @@ const Header = () => {
   return (
     <div
       ref={navContainerRef}
-      className={`fixed inset-x-0 top-4 z-50 border-none transition-all duration-700 sm:inset-x-6`}
+      className={`fixed inset-x-0 top-3 flex gap-3 z-50 border-none transition-all duration-700 sm:inset-x-6 overflow-hidden`}
     >
-      <div className="flex items-center justify-evenly">
-        <div className="flex w-full gap-3 items-center text-sm text-black mix-blend-difference overflow-hidden">
-          {links.map((link, index) => (
-            <motion.span
-              key={index}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
-              className="relative cursor-pointer text-black hover:underline"
-              onClick={() => {
-                if (lenis) {
-                  lenis.scrollTo(link.href);
-                }
-              }}
-            >
-              <Link href={link.href}>{link.name}</Link>
-            </motion.span>
-          ))}
-        </div>
-      </div>
+      {links.map((link, index) => (
+        <motion.span
+          key={index}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
+          className="relative cursor-pointer text-black hover:underline text-sm"
+          onClick={() => {
+            if (lenis) {
+              lenis.scrollTo(link.href);
+            }
+          }}
+        >
+          <Link href={link.href}>{link.name}</Link>
+        </motion.span>
+      ))}
     </div>
   );
 };

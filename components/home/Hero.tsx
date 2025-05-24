@@ -65,25 +65,38 @@ const Hero = () => {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
-      end: "bottom top",
+      end: "bottom+=1000 top",
       pin: true,
       scrub: true,
       onUpdate: (self) => {
+        const totalMovement = window.innerWidth / 2;
+
+        // console.log(totalMovement);
+        // console.log("self.progress", self.progress * 100);
+        // console.log(containerRef.current!.offsetWidth);
+
+        // console.log(self.progress * totalMovement);
+
         if (self.progress < 0.6) {
           gsap.to(containerRef.current, {
-            transform: `translateX(-${self.progress * 70}%)`,
+            x: `${-self.progress * 60 - 5}%`,
             opacity: 1,
           });
         }
-        if (self.progress > 0.5) {
-          gsap.to(containerRef.current, {
-            opacity: 1 - self.progress,
-          });
-        }
+        // if (self.progress > 0.5) {
+        //   gsap.to(containerRef.current, {
+        //     opacity: 1 - self.progress,
+        //   });
+        // }
       },
     });
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill();
+      });
+    };
   }, []);
 
   return (
@@ -112,13 +125,13 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="z-10 min-h-screen flex items-center px-10">
+      <div className=" min-h-screen flex items-center px-5 md:px-7 lg:px-10">
         <div className="uppercase font-bold">
-          <div className="overflow-hidden">
+          <div className="z-10 overflow-hidden">
             <motion.p
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               Hey, I'm
             </motion.p>
@@ -130,8 +143,8 @@ const Hero = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{
-                  duration: 0.5,
-                  delay: 1,
+                  duration: 1,
+                  delay: 0.3,
                   ease: [0.45, 0, 0.55, 1],
                 }}
                 className="text-6xl md:text-7xl lg:text-9xl"
@@ -151,7 +164,7 @@ const Hero = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 1,
                   delay: 0.6,
                   ease: [0.45, 0, 0.55, 1],
                 }}
@@ -168,8 +181,8 @@ const Hero = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{
-                  duration: 0.5,
-                  delay: 1.5,
+                  duration: 1,
+                  delay: 1.1,
                   ease: [0.45, 0, 0.55, 1],
                 }}
                 className="text-6xl md:text-7xl lg:text-9xl"

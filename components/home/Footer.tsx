@@ -143,7 +143,7 @@ const Footer = () => {
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : { scale: 0 }}
                 transition={{
-                  delay: isInView ? 0.5 + index * 0.1 : 0,
+                  delay: isInView ? 0.7 + index * 0.2 : 0,
                   type: "spring",
                   stiffness: 100,
                 }}
@@ -161,16 +161,31 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex items-center justify-end gap-2 p-4">
           <motion.div
-            className="p-4 flex justify-end gap-2 text-sm"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
-          >
-            div.border-t.border-white
-            <p className="text-right">Designed and Developed with ❤️ by me</p>
-          </motion.div>
+            initial={{ width: 0 }}
+            animate={{ width: isInView ? 60 : 0 }}
+            transition={{ duration: 1, delay: isInView ? 1 : 0 }}
+            className="border-t border-white"
+          />
+          <div className="text-right flex gap-2 items-center justify-end text-sm font-bold">
+            {"Designed and Developed with ❤️ by me"
+              .split(" ")
+              .map((word, index) => (
+                <motion.span
+                  key={index}
+                  className=""
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{
+                    delay: isInView ? 0.3 + 0.3 * index : 0,
+                    duration: 0.5,
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+          </div>
         </div>
 
         {/* Bottom Text */}
@@ -180,7 +195,7 @@ const Footer = () => {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
         >
-          <p className="text-right">© 2025</p>
+          <p className="text-right font-bold">© 2025</p>
         </motion.div>
       </div>
     </div>
