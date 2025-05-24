@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { ScrollParallax } from "react-just-parallax";
-import AnimatedTitle from "../AnimatedTitle";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const petalCount = 7;
@@ -22,7 +24,6 @@ const Hero = () => {
   const petalRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Animation variants for petals
   const petalVariants = {
     hidden: { opacity: 0, scaleY: 0, rotate: 0 },
     visible: (i: number) => ({
@@ -43,9 +44,8 @@ const Hero = () => {
         if (!el) return;
 
         const baseAngle = petals[i].angle;
-        const flickAngle = 1 + baseAngle + (Math.random() * 6 - 3); // ±3 degrees
+        const flickAngle = 1 + baseAngle + (Math.random() * 6 - 3);
 
-        // Wiggle to flick angle
         gsap.to(el, {
           rotate: flickAngle,
           duration: 0.4,
@@ -53,7 +53,6 @@ const Hero = () => {
           delay: i * 0.1,
         });
 
-        // Return to base angle
         gsap.to(el, {
           rotate: baseAngle,
           duration: 0.4,
@@ -61,13 +60,34 @@ const Hero = () => {
           delay: 0.5 + i * 0.1,
         });
       });
-    }, 4000); // every 5 seconds
+    }, 4000);
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        if (self.progress < 0.6) {
+          gsap.to(containerRef.current, {
+            transform: `translateX(-${self.progress * 70}%)`,
+            opacity: 1,
+          });
+        }
+        if (self.progress > 0.5) {
+          gsap.to(containerRef.current, {
+            opacity: 1 - self.progress,
+          });
+        }
+      },
+    });
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative h-[110vh] bg-white overflow-hidden">
+    <div className="relative h-[110vh] bg-white">
       {/* Petals container */}
       <div
         ref={containerRef}

@@ -17,7 +17,7 @@ const Footer = () => {
   const petals = Array.from({ length: petalCount }, (_, i) => {
     const angle = startAngle + (i * angleSpread) / (petalCount - 1);
     const distanceFromCenter = Math.abs(i - centerIndex);
-    const opacity = 0.8 - distanceFromCenter * 0.2;
+    const opacity = 0.9 - distanceFromCenter * 0.2;
 
     return { angle, opacity };
   });
@@ -88,7 +88,10 @@ const Footer = () => {
   }, [isInView]);
 
   return (
-    <div id="footer" className="relative h-dvh overflow-hidden bg-white">
+    <div
+      id="footer"
+      className="relative h-dvh overflow-hidden text-white bg-green-400"
+    >
       {/* Petals container */}
       <div
         ref={containerRef}
@@ -101,7 +104,7 @@ const Footer = () => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={petalVariants}
-            className="bg-green-300 h-[70vh] md:h-[90vh] w-[230px] md:w-[280px] absolute"
+            className="bg-white h-[70vh] md:h-[80vh] w-[230px] md:w-[280px] absolute"
             ref={(el) => {
               petalRefs.current[index] = el;
             }}
@@ -158,6 +161,18 @@ const Footer = () => {
           </div>
         </div>
 
+        <div className="flex justify-end">
+          <motion.div
+            className="p-4 flex justify-end gap-2 text-sm"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
+          >
+            div.border-t.border-white
+            <p className="text-right">Designed and Developed with ❤️ by me</p>
+          </motion.div>
+        </div>
+
         {/* Bottom Text */}
         <motion.div
           className="p-4 flex justify-end text-sm"
@@ -165,11 +180,7 @@ const Footer = () => {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
         >
-          <p className="text-right">
-            © 2025
-            <br />
-            Designed and Developed by me
-          </p>
+          <p className="text-right">© 2025</p>
         </motion.div>
       </div>
     </div>
