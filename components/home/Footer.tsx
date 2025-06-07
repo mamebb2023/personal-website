@@ -90,7 +90,7 @@ const Footer = () => {
   return (
     <div
       id="footer"
-      className="relative h-dvh overflow-hidden text-white bg-green-400"
+      className="relative h-dvh overflow-hidden text-white bg-gradient-to-br from-green-500 via-green-400 to-green-500"
     >
       {/* Petals container */}
       <div

@@ -102,7 +102,7 @@ const About = () => {
           </div>
         ))}
       </div>
-      <h1 className="font-bold text max-w-[500px] text text-[2em] uppercase tracking-wider transition-all text-gray-500/10 text-center">
+      <h1 className="font-bold text max-w-[500px] text text-[2em] uppercase tracking-wider transition-all text-green-500/10 text-center">
         I&apos;m a Full-Stack Web Developer passionate about designing intuitive
         front-end interfaces and building robust back-end systems.
       </h1>
