@@ -1,46 +1,20 @@
 "use client";
 
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/all";
 import Link from "next/link";
 import { RiLinkM } from "react-icons/ri";
-import { FaCode } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaCode } from "react-icons/fa6";
 import Image from "next/image";
+import { projects } from "@/constants";
+import { AnimatePresence, motion } from "framer-motion";
+import { MdNavigateNext } from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const projects = [
-    {
-      color: "#7bf1a8",
-      title: "WeMD Africa - Online Dermatology Clinic",
-      description: "Connecting patients with dermatologists across Africa.",
-      role: "Front-end Developer",
-      links: [
-        "https://wemd-africa.netlify.app/",
-        "https://github.com/mamebb2023/wemd-africa",
-      ],
-      duration: "Nov 2024 - Dec 2024",
-      features: [
-        "Light/Dark Theme",
-        "Fully Responsive",
-        "Localization (English ad Amharic)",
-        "Doctor Consultation Stepped Form",
-        "Chat Page",
-        "Animations ...",
-      ],
-      images: ["/assets/wemd/wemd-1.jpg"],
-      bestProject: true,
-      forClient: true,
-    },
-    { color: "#ff0000", title: "Project 2" },
-    { color: "#ff8c00", title: "Project 3" },
-    { color: "#0000ff", title: "Project 4" },
-    { color: "#8c00ff", title: "Project 5" },
-  ];
 
   useEffect(() => {
     const sections = gsap.utils.toArray<HTMLDivElement>(
@@ -68,14 +42,14 @@ const Projects = () => {
         end: "bottom center", // When bottom of section hits center again
         onEnter: () => {
           gsap.to(containerRef.current, {
-            backgroundColor: `${projects[index].color}20`,
+            background: `linear-gradient(to bottom right, transparent, ${projects[index].color}50)`,
             duration: 0.5,
             ease: "power1.out",
           });
         },
         onEnterBack: () => {
           gsap.to(containerRef.current, {
-            backgroundColor: `${projects[index].color}20`,
+            background: `linear-gradient(to bottom right, transparent, ${projects[index].color}50)`,
             duration: 0.5,
             ease: "power1.out",
           });
@@ -94,6 +68,23 @@ const Projects = () => {
             start: "center center",
             end: "bottom top",
             scrub: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        section.querySelectorAll(".project-sections"),
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top center-=200px",
+            toggleActions: "play none none reverse",
           },
         }
       );
@@ -128,13 +119,28 @@ const Projects = () => {
                 >
                   {/* left section */}
                   <div
-                    className="w-1/4 hidden md:flex flex-col justify-between backdrop-blur-md p-3"
-                    style={{ background: `${project.color}15` }}
+                    className="w-1/4 hidden md:flex flex-col justify-between backdrop-blur-md px-3 py-5"
+                    style={{
+                      background: `linear-gradient(to bottom, transparent, ${project.color}10, ${project.color}50)`,
+                    }}
                   >
-                    <div className="flex items-center justify-between text-sm p-3">
+                    {/* top */}
+                    <div className="project-sections flex items-center justify-between text-sm p-2">
                       <p
-                        className="py-1 px-2 rounded-full font-bold text-white"
-                        style={{ backgroundColor: project.color }}
+                        className={`py-1 px-2 rounded-full font-bold ${
+                          project.forClient
+                            ? "text-white"
+                            : `text-[${project.color}]`
+                        }`}
+                        style={{
+                          color: project.forClient ? "white" : project.color,
+                          backgroundColor: project.forClient
+                            ? project.color
+                            : "transparent",
+                          border: `1px solid ${
+                            project.forClient ? "white" : project.color
+                          }`,
+                        }}
                       >
                         {project.forClient ? "Client" : "Personal"}
                       </p>
@@ -147,15 +153,29 @@ const Projects = () => {
                       </div>
                     </div>
 
+                    {/* middle */}
+                    <div className="project-sections flex-center">
+                      {project.logo && (
+                        <Image
+                          src={project.logo}
+                          width={100}
+                          height={100}
+                          alt={project.title}
+                          className="w-24 h-24 object-contain"
+                        />
+                      )}
+                    </div>
+
+                    {/* bottom */}
                     <div className="flex flex-col gap-1">
-                      <div className="flex items-center justify-between text-sm">
+                      <div className="project-sections flex items-center justify-between text-sm">
                         <p className="">{project.role}</p>
                         <div className="flex gap-2">
                           {project.links?.map((link, index) => (
                             <Link
                               key={index}
                               href={link}
-                              className="size-8 border-1 text-xl hover:bg-white text-white rounded-full flex-center"
+                              className="size-8 border-2 border-transparent hover:border-white text-xl hover:bg-white text-white rounded-full flex-center transition-all duration-500"
                               style={{ backgroundColor: project.color }}
                               target="_blank"
                             >
@@ -165,17 +185,20 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      <p className="text-xl font-bold text-gray-800">
+                      <p className="project-sections text-xl font-bold text-gray-800">
                         {project.title}
                       </p>
-                      <p className="text-gray-600 text-sm">
+                      <p className="project-sections text-gray-600 text-sm">
                         {project.description}
                       </p>
-                      <p className="text-green-800 text-sm text-right">
+                      <p
+                        className="self-end project-sections font-bold px-3 py-1 rounded-full bg-white text-sm text-right"
+                        style={{ color: project.color }}
+                      >
                         {project.duration}
                       </p>
 
-                      <ul className="list-disc space-y-1 text-sm pl-4">
+                      <ul className="project-sections list-disc space-y-1 text-sm pl-4">
                         {project.features?.map((feature, idx) => (
                           <li key={idx}>{feature}</li>
                         ))}
@@ -184,27 +207,11 @@ const Projects = () => {
                   </div>
 
                   {/* right section */}
-                  <div className="relative flex-1 flex bg-white/70">
-                    <div className="absolute flex items-center justify-center w-full h-full overflow-hidden">
-                      <Image
-                        src={project.images?.[0] || "/assets/default-image.jpg"}
-                        width={800}
-                        height={800}
-                        alt={project.title}
-                        className="w-full h-full object-cover opacity-40 blur-sm"
-                      />
-                    </div>
-
-                    <div className="relative flex items-center justify-center w-full h-full">
-                      <Image
-                        src={project.images?.[0] || "/assets/default-image.jpg"}
-                        width={1000}
-                        height={1000}
-                        alt={project.title}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
+                  <ProjectImageSlider
+                    images={project.images ?? []}
+                    title={project.title}
+                    color={project.color}
+                  />
                 </div>
               </div>
             );
@@ -212,6 +219,109 @@ const Projects = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const ProjectImageSlider = ({
+  images = [],
+  title = "Project",
+  color,
+}: {
+  images: string[];
+  title?: string;
+  color?: string;
+}) => {
+  const validImages = images.length ? images : ["/assets/default-image.jpg"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % validImages.length);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex(
+      (prev) => (prev - 1 + validImages.length) % validImages.length
+    );
+  };
+
+  return (
+    <div className="relative flex-1 flex bg-white/70">
+      {/* Blurred background image */}
+      <motion.div
+        key={`blur-${currentIndex}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        className="absolute flex items-center justify-center w-full h-full overflow-hidden"
+      >
+        <Image
+          src={validImages[currentIndex]}
+          width={800}
+          height={800}
+          alt={title}
+          className="w-full h-full object-cover opacity-90 blur-sm"
+        />
+      </motion.div>
+
+      {/* Foreground image */}
+      <div className="relative flex items-center justify-center w-full h-full overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`image-${currentIndex}`}
+            initial={{ opacity: 0, x: direction * 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -100 }}
+            transition={{ duration: 0.4 }}
+            className="absolute w-full h-full"
+          >
+            <Image
+              src={validImages[currentIndex]}
+              width={1000}
+              height={1000}
+              alt={title}
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation buttons */}
+        {validImages.length > 1 && (
+          <div className="w-full absolute flex justify-between p-2">
+            <button
+              onClick={handlePrev}
+              className="text-white not-first:text-md border-2 hover:scale-105 bg-white/10 cursor-pointer rounded-full flex-center transition-all p-2 text-lg"
+              style={{ borderColor: color, color }}
+            >
+              <MdNavigateNext className="rotate-180" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="text-white not-first:text-md border-2 hover:scale-105 bg-white/10 cursor-pointer rounded-full flex-center transition-all p-2 text-lg"
+              style={{ borderColor: color, color }}
+            >
+              <MdNavigateNext />
+            </button>
+          </div>
+        )}
+
+        <div className="absolute bottom-2 flex-center gap-2">
+          {validImages.map((image, index) => (
+            <div
+              key={index}
+              className={`size-2 rounded-full border-1 cursor-pointer transition-all duration-300 `}
+              style={{
+                borderColor: color,
+                backgroundColor: currentIndex === index ? color : "transparent",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
