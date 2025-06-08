@@ -7,7 +7,7 @@ import Link from "next/link";
 import { RiLinkM } from "react-icons/ri";
 import { FaChevronLeft, FaChevronRight, FaCode } from "react-icons/fa6";
 import Image from "next/image";
-import { projects } from "@/constants";
+import { miniProjects, projects } from "@/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdNavigateNext } from "react-icons/md";
 
@@ -105,7 +105,7 @@ const Projects = () => {
         <div className="flex-1 border-t border-gray-200" />
       </div>
 
-      <div className="projects relative">
+      <div className="projects flex-wrap relative">
         <div ref={containerRef} className="projects relative z-10">
           {projects.map((project, index) => {
             return (
@@ -216,6 +216,15 @@ const Projects = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="flex-center flex-wrap h-screen p-3 gap-3 py-10 md:py-20">
+          {miniProjects.map((project, index) => (
+            <div
+              key={index}
+              className="relative w-[30%] h-[250px] flex-shrink-0 "
+            ></div>
+          ))}
         </div>
       </div>
     </>

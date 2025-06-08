@@ -116,7 +116,137 @@ export const projects = [
     bestProject: true,
     forClient: true,
   },
-  { color: "#ff8c00", title: "Project 3" },
-  { color: "#ff0000", title: "Project 4" },
-  { color: "#8c00ff", title: "Project 5" },
+  {
+    color: "#ff8c00",
+    title: "DevOverflow | Q&A Web Application",
+    description:
+      "A modern Q&A platform designed to foster knowledge sharing and collaboration.",
+    role: "Full Stack Developer",
+    links: [
+      "https://devflow-nextjs.netlify.app/",
+      "https://github.com/mamebb2023/nextjs",
+    ],
+    duration: "Sep 2024 - Nov 2024",
+    features: [
+      "Clerk User Authentication",
+      "Question and Answer System",
+      "Upvote/Downvote Mechanism",
+      "Commenting System",
+      "Responsive Design",
+      "Admin Dashboard",
+    ],
+    logo: "/assets/devflow/devflow-logo.png",
+    images: [
+      "/assets/devflow/devflow-1.png",
+      "/assets/devflow/devflow-2.png",
+      "/assets/devflow/devflow-3.jpg",
+      "/assets/devflow/devflow-4.jpg",
+      "/assets/devflow/devflow-5.jpg",
+      "/assets/devflow/devflow-6.jpg",
+    ],
+  },
+  {
+    color: "#8c00ff",
+    title: "Brainwave | Modern & Responsive React Website",
+    description:
+      "A sleek and modern React website showcasing the latest in web design.",
+    role: "Front-end Developer",
+    links: [
+      "https://brainwave-react.netlify.app/",
+      "https://github.com/mamebb2023/brainwave/",
+    ],
+    duration: "Feb 2024 - Mar 2024",
+    features: [
+      "Responsive Design",
+      "Modern UI Components",
+      "Smooth Animations",
+      "SEO Optimized",
+      "Cross-Browser Compatibility",
+    ],
+    logo: "/assets/brainwave/brainwave-logo.png",
+    images: [
+      "/assets/brainwave/brainwave-1.png",
+      "/assets/brainwave/brainwave-2.png",
+      "/assets/brainwave/brainwave-3.png",
+      "/assets/brainwave/brainwave-4.png",
+      "/assets/brainwave/brainwave-5.png",
+    ],
+  },
+];
+
+export const miniProjects = [
+  {
+    color: "#008c00",
+    title: "Ethio-Commerce | Secure & User-Friendly E-Commerce",
+    description:
+      "E-commerce platform designed to simplify online shopping",
+    role: "Front-end Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Secure Login System", "Easy Cart Management", "Streamlined Admin Tools"],
+    logo: "/assets/et/et-logo.png",
+    image: "/assets/et/et-1.png",
+  },
+  {
+    color: "#1010a0",
+    title: "CalHabit - Habit tracking web app",
+    description:
+      "Modern habit tracker designed to help you stay on top of your goals",
+    
+    role: "Full Stack Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    logo: "/assets/calhabit/calhabit-logo.png",
+    image: "/assets/calhabit/calhabit-1.webp",
+  },
+  {
+    color: "#ffff00",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    role: "Front-end Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    logo: "/assets/brainwave/brainwave-logo.png",
+    image: "/assets/brainwave/brainwave-1.png",
+  },
+  {
+    color: "#ff8cff",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    role: "Front-end Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    logo: "/assets/brainwave/brainwave-logo.png",
+    image: "/assets/brainwave/brainwave-1.png",
+  },
+  {
+    color: "#056c0f",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    role: "Front-end Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    logo: "/assets/brainwave/brainwave-logo.png",
+    image: "/assets/brainwave/brainwave-1.png",
+  },
+  {
+    color: "#f55500",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    role: "Front-end Developer",
+    links: ["https://mamebb2023.github.io/portfolio/"],
+    duration: "Jan 2024 - Jan 2024",
+    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    logo: "/assets/brainwave/brainwave-logo.png",
+    image: "/assets/brainwave/brainwave-1.png",
+  },
+  
 ];
