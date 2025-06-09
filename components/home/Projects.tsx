@@ -30,7 +30,11 @@ const Projects = () => {
         pinSpacing: false,
         snap: {
           snapTo: (value) =>
-            index === 0 ? (value >= 0.5 ? 1 : 0) : Math.round(value),
+            index !== projects.length
+              ? value >= 0.5
+                ? 1
+                : 0
+              : Math.round(value),
           duration: { min: 0.2, max: 0.8 },
           ease: "power3.out",
         },
@@ -105,7 +109,7 @@ const Projects = () => {
         <div className="flex-1 border-t border-gray-200" />
       </div>
 
-      <div className="projects flex-wrap relative">
+      <div className="projects">
         <div ref={containerRef} className="projects relative z-10">
           {projects.map((project, index) => {
             return (
@@ -218,12 +222,38 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="flex-center flex-wrap h-screen p-3 gap-3 py-10 md:py-20">
+        <div className="z-30 relative flex h-[80vh] w-screen">
           {miniProjects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="relative w-[30%] h-[250px] flex-shrink-0 "
-            ></div>
+              className="flex-1 relative group overflow-hidden transition-all duration-500 cursor-pointer"
+              style={{
+                background: `url("${project.image}") no-repeat center center/cover`,
+              }}
+              whileHover={{ flex: 4 }}
+            >
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h2 className="text-2xl font-bold">{project.title}</h2>
+                <p className="text-sm text-gray-200">{project.description}</p>
+
+                <div className="flex gap-2 mt-2">
+                  {project.links?.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      href={link}
+                      target="_blank"
+                      className="border px-2 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
+                    >
+                      {idx === 0 ? "Live" : "Code"}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

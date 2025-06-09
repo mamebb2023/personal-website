@@ -89,8 +89,8 @@ const Footer = () => {
 
   return (
     <div
-      id="footer"
-      className="relative h-dvh overflow-hidden text-white bg-gradient-to-br from-green-500 via-green-400 to-green-500"
+      id="contact"
+      className="z-30 relative h-dvh overflow-hidden text-green-950 bg-gradient-to-br from-white via-green-200 to-white"
     >
       {/* Petals container */}
       <div
@@ -104,7 +104,7 @@ const Footer = () => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={petalVariants}
-            className="bg-white h-[70vh] md:h-[80vh] w-[230px] md:w-[280px] absolute"
+            className="bg-green-300 h-[70vh] md:h-[80vh] w-[230px] md:w-[280px] absolute"
             ref={(el) => {
               petalRefs.current[index] = el;
             }}
@@ -166,7 +166,7 @@ const Footer = () => {
             initial={{ width: 0 }}
             animate={{ width: isInView ? 60 : 0 }}
             transition={{ duration: 1, delay: isInView ? 1 : 0 }}
-            className="border-t border-white"
+            className="border-t border-green-950"
           />
           <div className="text-right flex gap-2 items-center justify-end text-sm font-bold">
             {"Designed and Developed with ❤️ by me"
