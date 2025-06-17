@@ -35,7 +35,7 @@ const Projects = () => {
                 ? 1
                 : 0
               : Math.round(value),
-          duration: { min: 0.2, max: 0.8 },
+          duration: { min: 0.2, max: 0.5 },
           ease: "power3.out",
         },
       });
@@ -232,7 +232,7 @@ const Projects = () => {
               }}
             >
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient from-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
               <div className="w-lg absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-white/5 via-white/30 to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-500 rounded-lg backdrop-blur-sm">
