@@ -125,7 +125,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className=" min-h-screen flex items-center px-5 md:px-7 lg:px-10">
+      <div className="min-h-screen flex items-center px-5 md:px-7 lg:px-10">
         <div className="uppercase font-bold">
           <div className="z-10 overflow-hidden">
             <motion.p
@@ -133,7 +133,7 @@ const Hero = () => {
               animate={{ y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Hey, I'm
+              Hello! I'm
             </motion.p>
           </div>
 
@@ -196,6 +196,8 @@ const Hero = () => {
             </div>
           </ScrollParallax>
         </div>
+
+        {/* <div className="absolute bottom-0 left-0 p-1 bg-red-500"></div> */}
       </div>
     </div>
   );

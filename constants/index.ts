@@ -112,6 +112,7 @@ export const projects = [
       "/assets/sanai/sanai-2.png",
       "/assets/sanai/sanai-3.png",
       "/assets/sanai/sanai-4.png",
+      "/assets/sanai/sanai-5.png",
     ],
     bestProject: true,
     forClient: true,
@@ -178,11 +179,14 @@ export const miniProjects = [
   {
     color: "#008c00",
     title: "Ethio-Commerce | Secure & User-Friendly E-Commerce",
-    description:
-      "E-commerce platform designed to simplify online shopping",
+    description: "E-commerce platform designed to simplify online shopping",
     role: "Front-end Developer",
-    links: ["https://mamebb2023.github.io/portfolio/"],
-    features: ["Secure Login System", "Easy Cart Management", "Streamlined Admin Tools"],
+    links: ["", "https://github.com/mamebb2023/ethio-commerce/"],
+    features: [
+      "Secure Login System",
+      "Easy Cart Management",
+      "Streamlined Admin Tools",
+    ],
     logo: "/assets/et/et-logo.png",
     image: "/assets/et/et-1.png",
   },
@@ -191,10 +195,10 @@ export const miniProjects = [
     title: "CalHabit - Habit tracking web app",
     description:
       "Modern habit tracker designed to help you stay on top of your goals",
-    
+
     role: "Full Stack Developer",
-    links: ["https://mamebb2023.github.io/portfolio/"],
-    features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
+    links: ["https://cal-habit.vercel.app/", "https://github.com/mamebb2023/CalHabit"],
+    features: ["Easy Habit Tracking", "Responsive Design"],
     logo: "/assets/calhabit/calhabit-logo.png",
     image: "/assets/calhabit/calhabit-1.webp",
   },
@@ -203,7 +207,10 @@ export const miniProjects = [
     title: "TraderPro",
     description: "Modern landing page made with React website",
     role: "Front-end Developer",
-    links: ["https://trakerpro.vercel.app/", "https://github.com/mamebb2023/TraderPro"],
+    links: [
+      "https://trakerpro.vercel.app/",
+      "https://github.com/mamebb2023/TraderPro",
+    ],
     features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
     logo: "/assets/tp/tp-logo.webp",
     image: "/assets/tp/tp-1.png",
@@ -211,10 +218,12 @@ export const miniProjects = [
   {
     color: "#ffff00",
     title: "Maze Game",
-    description:
-      "C-powered maze challenge built with the SDL2 Engine. ",
+    description: "C-powered maze challenge built with the SDL2 Engine. ",
     role: "Software Developer",
-    links: ["https://mamez7878.github.io/maze/", "https://github.com/mamebb2023/Maze-Project"],
+    links: [
+      "https://mamez7878.github.io/maze/",
+      "https://github.com/mamebb2023/Maze-Project",
+    ],
     features: ["Interactive Gameplay", "Easy control"],
     logo: "/assets/maze/maze-logo.png",
     image: "/assets/maze/maze-1.png",

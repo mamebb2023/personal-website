@@ -222,23 +222,24 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="z-30 relative flex h-[80vh] w-screen">
+        <div className="z-30 relative flex h-screen w-screen">
           {miniProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="flex-1 relative group overflow-hidden transition-all duration-500 cursor-pointer"
+              className="relative flex-1 hover:flex-6 group overflow-hidden transition-all duration-500"
               style={{
                 background: `url("${project.image}") no-repeat center center/cover`,
               }}
-              whileHover={{ flex: 4 }}
             >
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <h2 className="text-2xl font-bold">{project.title}</h2>
-                <p className="text-sm text-gray-200">{project.description}</p>
+              <div className="w-lg absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-white/5 via-white/30 to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-500 rounded-lg backdrop-blur-sm">
+                <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-100 to-green-300">
+                  {project.title}
+                </h2>
+                <p className="text-sm text-green-200">{project.description}</p>
 
                 <div className="flex gap-2 mt-2">
                   {project.links?.map((link, idx) => (
@@ -246,11 +247,29 @@ const Projects = () => {
                       key={idx}
                       href={link}
                       target="_blank"
-                      className="border px-2 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
+                      className="border px-2 py-1 rounded-full text-xs hover:bg-white hover:text-green-500 transition"
                     >
                       {idx === 0 ? "Live" : "Code"}
                     </Link>
                   ))}
+                </div>
+
+                <ul className="mt-2 list-disc pl-4 space-y-1">
+                  {project.features?.map((feature, idx) => (
+                    <li key={idx} className="text-sm">
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="absolute bottom-0 right-0 p-3">
+                  <Image
+                    src={project.logo}
+                    width={50}
+                    height={50}
+                    alt={project.title}
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
               </div>
             </motion.div>
