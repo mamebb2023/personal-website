@@ -181,7 +181,7 @@ export const miniProjects = [
       "Admin Dashboard",
     ],
     logo: "/assets/devflow/devflow-logo.png",
-    images: "/assets/devflow/devflow-1.png",
+    image: "/assets/devflow/devflow-1.png",
   },
   {
     color: "#1010a0",
