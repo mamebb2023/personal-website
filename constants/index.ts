@@ -93,6 +93,8 @@ export const projects = [
   },
   {
     color: "#00D9FF",
+    bestProject: true,
+    forClient: true,
     title: "SanAI | Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
@@ -113,37 +115,6 @@ export const projects = [
       "/assets/sanai/sanai-3.png",
       "/assets/sanai/sanai-4.png",
       "/assets/sanai/sanai-5.png",
-    ],
-    bestProject: true,
-    forClient: true,
-  },
-  {
-    color: "#ff8c00",
-    title: "DevOverflow | Q&A Web Application",
-    description:
-      "A modern Q&A platform designed to foster knowledge sharing and collaboration.",
-    role: "Full Stack Developer",
-    links: [
-      "https://devflow-nextjs.netlify.app/",
-      "https://github.com/mamebb2023/nextjs",
-    ],
-    duration: "Sep 2024 - Nov 2024",
-    features: [
-      "Clerk User Authentication",
-      "Question and Answer System",
-      "Upvote/Downvote Mechanism",
-      "Commenting System",
-      "Responsive Design",
-      "Admin Dashboard",
-    ],
-    logo: "/assets/devflow/devflow-logo.png",
-    images: [
-      "/assets/devflow/devflow-1.png",
-      "/assets/devflow/devflow-2.png",
-      "/assets/devflow/devflow-3.jpg",
-      "/assets/devflow/devflow-4.jpg",
-      "/assets/devflow/devflow-5.jpg",
-      "/assets/devflow/devflow-6.jpg",
     ],
   },
   {
@@ -173,22 +144,44 @@ export const projects = [
       "/assets/brainwave/brainwave-5.png",
     ],
   },
-];
-
-export const miniProjects = [
   {
     color: "#008c00",
     title: "Ethio-Commerce | Secure & User-Friendly E-Commerce",
     description: "E-commerce platform designed to simplify online shopping",
     role: "Front-end Developer",
-    links: ["", "https://github.com/mamebb2023/ethio-commerce/"],
+    links: ["#", "https://github.com/mamebb2023/ethio-commerce/"],
     features: [
       "Secure Login System",
       "Easy Cart Management",
       "Streamlined Admin Tools",
     ],
     logo: "/assets/et/et-logo.png",
-    image: "/assets/et/et-1.png",
+    image: ["/assets/et/et-1.png"],
+  },
+];
+
+export const miniProjects = [
+  {
+    color: "#ff8c00",
+    title: "DevOverflow | Q&A Web Application",
+    description:
+      "A modern Q&A platform designed to foster knowledge sharing and collaboration.",
+    role: "Full Stack Developer",
+    links: [
+      "#",
+      "https://github.com/mamebb2023/nextjs",
+    ],
+    duration: "Sep 2024 - Nov 2024",
+    features: [
+      "Clerk User Authentication",
+      "Question and Answer System",
+      "Upvote/Downvote Mechanism",
+      "Commenting System",
+      "Responsive Design",
+      "Admin Dashboard",
+    ],
+    logo: "/assets/devflow/devflow-logo.png",
+    images: "/assets/devflow/devflow-1.png",
   },
   {
     color: "#1010a0",
