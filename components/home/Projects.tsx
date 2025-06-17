@@ -123,7 +123,7 @@ const Projects = () => {
                 >
                   {/* left section */}
                   <div
-                    className="w-1/4 hidden md:flex flex-col justify-between backdrop-blur-md px-3 py-5"
+                    className="w-1/4 flex flex-col justify-between backdrop-blur-md px-3 py-5"
                     style={{
                       background: `linear-gradient(to bottom, transparent, ${project.color}10, ${project.color}50)`,
                     }}
@@ -306,7 +306,7 @@ const ProjectImageSlider = ({
   };
 
   return (
-    <div className="relative flex-1 flex bg-white/70">
+    <div className="relative flex-1 hidden md:flex bg-white/70">
       {/* Blurred background image */}
       <motion.div
         key={`blur-${currentIndex}`}

@@ -156,7 +156,7 @@ export const projects = [
       "Streamlined Admin Tools",
     ],
     logo: "/assets/et/et-logo.png",
-    image: ["/assets/et/et-1.png"],
+    images: ["/assets/et/et-1.png"],
   },
 ];
 
