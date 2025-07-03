@@ -201,7 +201,7 @@ export const miniProjects = [
     description: "Modern landing page made with React website",
     role: "Front-end Developer",
     links: [
-      "https://trakerpro.vercel.app/",
+      "https://traderpro-1.vercel.app/",
       "https://github.com/mamebb2023/TraderPro",
     ],
     features: ["Responsive Design", "Smooth Scrolling", "Animated Elements"],
