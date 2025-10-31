@@ -64,7 +64,7 @@ export const projects = [
     title: "WeMD Africa - Online Dermatology Clinic",
     description: "Connecting patients with dermatologists across Africa.",
     role: "Front-end Developer",
-    links: ["https://wemd-africa.netlify.app/"],
+    links: ["https://wemd-africa.vercel.app/"],
     duration: "Nov 2024 - Dec 2024",
     features: [
       "Light/Dark Theme",
@@ -98,7 +98,7 @@ export const projects = [
     title: "SanAI | Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
-    links: ["https://sanai-nu.vercel.app/"],
+    links: ["https://sanai.live/"],
     duration: "May 2025 - Present",
     features: [
       "AI Voice Chatbot",
@@ -124,7 +124,7 @@ export const projects = [
       "A sleek and modern React website showcasing the latest in web design.",
     role: "Front-end Developer",
     links: [
-      "https://brainwave-react.netlify.app/",
+      "https://brainwave-iota-five-26.vercel.app/",
       "https://github.com/mamebb2023/brainwave/",
     ],
     duration: "Feb 2024 - Mar 2024",
@@ -149,7 +149,7 @@ export const projects = [
     title: "Ethio-Commerce | Secure & User-Friendly E-Commerce",
     description: "E-commerce platform designed to simplify online shopping",
     role: "Front-end Developer",
-    links: ["#", "https://github.com/mamebb2023/ethio-commerce/"],
+    links: ["https://github.com/mamebb2023/ethio-commerce/"],
     features: [
       "Secure Login System",
       "Easy Cart Management",
@@ -168,7 +168,6 @@ export const miniProjects = [
       "A modern Q&A platform designed to foster knowledge sharing and collaboration.",
     role: "Full Stack Developer",
     links: [
-      "#",
       "https://github.com/mamebb2023/nextjs",
     ],
     duration: "Sep 2024 - Nov 2024",
