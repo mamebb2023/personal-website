@@ -60,7 +60,7 @@ export const links = [
 
 export const projects = [
   {
-    color: "#dc00c9ff",
+    color: "#dc00c9",
     title: "LotusFlow | Live React Component Generator",
     description: "AI-powered tool to generate React components just from text prompts.",
     role: "Full Stack Developer",
