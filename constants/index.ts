@@ -60,6 +60,33 @@ export const links = [
 
 export const projects = [
   {
+    color: "#dc00c9ff",
+    title: "LotusFlow | Live React Component Generator",
+    description: "AI-powered tool to generate React components just from text prompts.",
+    role: "Full Stack Developer",
+    links: ["https://lotusflow.vercel.app/"],
+    duration: "Aug 2025 - current",
+    features: [
+      "AI-Powered Component Generation",
+      "Real-time Design Preview",
+      "Real-time Code Preview",
+      "Customizable Props",
+      "Export Options",
+      "Responsive Design",
+    ],
+    logo: "/assets/lotusflow/lotusflow-logo.png",
+    images: [
+      "/assets/lotusflow/lotusflow-1.png",
+      "/assets/lotusflow/lotusflow-2.png",
+      "/assets/lotusflow/lotusflow-3.png",
+      "/assets/lotusflow/lotusflow-4.png",
+      "/assets/lotusflow/lotusflow-5.png",
+      "/assets/lotusflow/lotusflow-6.png",
+      "/assets/lotusflow/lotusflow-7.png",
+    ],
+    bestProject: true,
+  },
+  {
     color: "#6BCF91",
     title: "WeMD Africa - Online Dermatology Clinic",
     description: "Connecting patients with dermatologists across Africa.",
@@ -93,7 +120,6 @@ export const projects = [
   },
   {
     color: "#00D9FF",
-    bestProject: true,
     forClient: true,
     title: "SanAI | Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
