@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <div
       ref={navContainerRef}
-      className={`fixed inset-x-0 top-3 flex gap-3 z-50 border-none transition-all duration-700 sm:inset-x-6 overflow-hidden`}
+      className={`fixed inset-x-0 top-3 flex gap-3 z-50 border-none transition-all duration-700 sm:inset-x-6 overflow-hidden px-3`}
     >
       {links.map((link, index) => (
         <motion.span

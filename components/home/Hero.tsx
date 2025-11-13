@@ -5,126 +5,13 @@ import React, { useEffect, useRef } from "react";
 import { ScrollParallax } from "react-just-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import Lotus from "../shared/Lotus";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const petalCount = 7;
-  const centerIndex = Math.floor(petalCount / 2);
-  const angleSpread = 150;
-  const startAngle = -angleSpread / 2;
-  const petals = Array.from({ length: petalCount }, (_, i) => {
-    const angle = startAngle + (i * angleSpread) / (petalCount - 1);
-    const distanceFromCenter = Math.abs(i - centerIndex);
-    const opacity = 0.8 - distanceFromCenter * 0.2;
-
-    return { angle, opacity };
-  });
-
-  const petalRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const petalVariants = {
-    hidden: { opacity: 0, scaleY: 0, rotate: 0 },
-    visible: (i: number) => ({
-      opacity: petals[i].opacity,
-      scaleY: 1,
-      rotate: petals[i].angle,
-      transition: {
-        duration: 1,
-        delay: 2,
-        ease: [0.33, 1, 0.68, 1],
-      },
-    }),
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      petalRefs.current.forEach((el, i) => {
-        if (!el) return;
-
-        const baseAngle = petals[i].angle;
-        const flickAngle = 1 + baseAngle + (Math.random() * 6 - 3);
-
-        gsap.to(el, {
-          rotate: flickAngle,
-          duration: 0.4,
-          ease: "power1.inOut",
-          delay: i * 0.1,
-        });
-
-        gsap.to(el, {
-          rotate: baseAngle,
-          duration: 0.4,
-          ease: "power1.inOut",
-          delay: 0.5 + i * 0.1,
-        });
-      });
-    }, 4000);
-
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: "bottom+=1000 top",
-      pin: true,
-      scrub: true,
-      onUpdate: (self) => {
-        const totalMovement = window.innerWidth / 2;
-
-        // console.log(totalMovement);
-        // console.log("self.progress", self.progress * 100);
-        // console.log(containerRef.current!.offsetWidth);
-
-        // console.log(self.progress * totalMovement);
-
-        if (self.progress < 0.6) {
-          gsap.to(containerRef.current, {
-            x: `${-self.progress * 60 - 5}%`,
-            opacity: 1,
-          });
-        }
-        // if (self.progress > 0.5) {
-        //   gsap.to(containerRef.current, {
-        //     opacity: 1 - self.progress,
-        //   });
-        // }
-      },
-    });
-
-    return () => {
-      clearInterval(interval);
-      ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill();
-      });
-    };
-  }, []);
-
   return (
     <div className="relative h-[110vh] bg-white">
-      {/* Petals container */}
-      <div
-        ref={containerRef}
-        className="absolute h-dvh w-full flex items-center justify-end"
-      >
-        {petals.map((_, index) => (
-          <motion.div
-            key={index}
-            custom={index}
-            initial="hidden"
-            animate="visible"
-            variants={petalVariants}
-            ref={(el) => {
-              petalRefs.current[index] = el;
-            }}
-            className="bg-green-300 h-[70vh] md:h-[90vh] w-[230px] md:w-[280px] absolute"
-            style={{
-              clipPath: "ellipse(50% 50% at 50% 50%)",
-              transformOrigin: "center bottom",
-            }}
-          />
-        ))}
-      </div>
-
       <div className="min-h-screen flex items-center px-5 md:px-7 lg:px-10">
         <div className="uppercase font-bold">
           <div className="z-10 overflow-hidden">
@@ -197,7 +84,7 @@ const Hero = () => {
           </ScrollParallax>
         </div>
 
-        {/* <div className="absolute bottom-0 left-0 p-1 bg-red-500"></div> */}
+        <Lotus gradient="bg-gradient-to-b from-green-500 to-green-200/50" />
       </div>
     </div>
   );

@@ -83,7 +83,7 @@ const Projects = () => {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.2,
+          stagger: 0.1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: section,
@@ -115,20 +115,19 @@ const Projects = () => {
             return (
               <div
                 key={index}
-                className="relative h-dvh flex items-center justify-center "
+                className="relative h-dvh flex items-center justify-center shadow-sm"
               >
                 <div
-                  className={`flex w-[90%] h-[90%] rounded-2xl shadow-lg overflow-hidden borde r-2`}
+                  className={`flex flex-col-reverse md:flex-row w-[90%] h-[90%] rounded-2xl shadow-lg overflow-hidden borde r-2`}
                   style={{ borderColor: project.color }}
                 >
                   {/* left section */}
                   <div
-                    className="w-1/4 flex flex-col justify-between backdrop-blur-md px-3 py-5"
+                    className="w-auto md:w-1/4 flex flex-col justify-between backdrop-blur-md px-3 py-5"
                     style={{
                       background: `linear-gradient(to bottom, transparent, ${project.color}10, ${project.color}50)`,
                     }}
                   >
-                    {/* top */}
                     <div className="project-sections flex items-center justify-between text-sm p-2">
                       <p
                         className={`py-1 px-2 rounded-full font-bold ${
@@ -148,6 +147,7 @@ const Projects = () => {
                       >
                         {project.forClient ? "Client" : "Personal"}
                       </p>
+
                       <div className="flex gap-2">
                         {project.bestProject && (
                           <span className="text-yellow-900 py-1 px-2 rounded-full bg-gradient-to-br from-yellow-500 via-yellow-200 to-yellow-500 font-bold">
@@ -158,7 +158,7 @@ const Projects = () => {
                     </div>
 
                     {/* middle */}
-                    <div className="project-sections flex-center">
+                    <div className="hidden project-sections md:flex items-center justify-center">
                       {project.logo && (
                         <Image
                           src={project.logo}
@@ -222,7 +222,7 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="z-30 relative flex h-screen w-screen">
+        <div className="z-30 relative flex flex-col md:flex-row h-screen w-screen">
           {miniProjects.map((project, index) => (
             <motion.div
               key={index}
@@ -235,7 +235,7 @@ const Projects = () => {
               <div className="absolute inset-0 bg-gradient from-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
-              <div className="w-lg absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-white/5 via-white/30 to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-500 rounded-lg backdrop-blur-sm">
+              <div className="max-w-md backdrop-blur-sm absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-black/5 via-black/30 to-black/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-500 rounded-lg">
                 <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-100 to-green-300">
                   {project.title}
                 </h2>
@@ -306,7 +306,7 @@ const ProjectImageSlider = ({
   };
 
   return (
-    <div className="relative flex-1 hidden md:flex bg-white/70">
+    <div className="relative flex-1 flex bg-white/70">
       {/* Blurred background image */}
       <motion.div
         key={`blur-${currentIndex}`}
@@ -321,7 +321,7 @@ const ProjectImageSlider = ({
           width={800}
           height={800}
           alt={title}
-          className="w-full h-full object-cover opacity-90 blur-sm"
+          className="w-full h-full object-cover opacity-80 blur-[3px]"
         />
       </motion.div>
 

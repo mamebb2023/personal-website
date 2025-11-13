@@ -65,7 +65,7 @@ export const projects = [
     description: "AI-powered tool to generate React components just from text prompts.",
     role: "Full Stack Developer",
     links: ["https://lotusflow.vercel.app/"],
-    duration: "Aug 2025 - current",
+    duration: "Aug 2025 - Present",
     features: [
       "AI-Powered Component Generation",
       "Real-time Design Preview",
@@ -125,7 +125,7 @@ export const projects = [
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
     links: ["https://sanai.live/"],
-    duration: "May 2025 - Present",
+    duration: "May 2025 - Jul 2025",
     features: [
       "AI Voice Chatbot",
       "Image Recognition",
