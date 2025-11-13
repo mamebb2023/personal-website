@@ -6,7 +6,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Mohammednur | Software Engineer",
   description:
-    "Portfolio of Mohammednur, a software engineer specializing in web development.",
+    "Works of Mohammednur, a software engineer specializing in web development.",
   keywords: [],
   formatDetection: {
     telephone: false,

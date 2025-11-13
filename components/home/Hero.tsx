@@ -11,7 +11,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   return (
-    <div className="relative h-[110vh] bg-white overflow-x-hidden">
+    <div className="relative h-[110vh] bg-white ">
+      <div className="absolute bottom-0 right-0">
+        <Lotus gradient="bg-gradient-to-b from-green-500 to-green-200/50" />
+      </div>
+
       <div className="min-h-screen flex items-center px-5 md:px-7 lg:px-10">
         <div className="uppercase font-bold">
           <div className="z-10 overflow-hidden">
@@ -34,7 +38,7 @@ const Hero = () => {
                   delay: 0.3,
                   ease: [0.45, 0, 0.55, 1],
                 }}
-                className="text-6xl md:text-7xl lg:text-9xl"
+                className="text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
@@ -55,7 +59,7 @@ const Hero = () => {
                   delay: 0.6,
                   ease: [0.45, 0, 0.55, 1],
                 }}
-                className="relative text-6xl md:text-7xl lg:text-9xl"
+                className="relative text-5xl md:text-7xl lg:text-9xl"
               >
                 Mohammednur
               </motion.p>
@@ -72,7 +76,7 @@ const Hero = () => {
                   delay: 1.1,
                   ease: [0.45, 0, 0.55, 1],
                 }}
-                className="text-6xl md:text-7xl lg:text-9xl"
+                className="text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
@@ -83,8 +87,6 @@ const Hero = () => {
             </div>
           </ScrollParallax>
         </div>
-
-        <Lotus gradient="bg-gradient-to-b from-green-500 to-green-200/50" />
       </div>
     </div>
   );
