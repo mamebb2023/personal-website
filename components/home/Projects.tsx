@@ -26,8 +26,8 @@ const Projects = () => {
         trigger: section,
         start: "top top",
         end: "bottom top",
-        pin: true,
-        pinSpacing: false,
+        // pin: true,
+        // pinSpacing: false,
         snap: {
           snapTo: (value) =>
             index !== projects.length
@@ -232,10 +232,10 @@ const Projects = () => {
               }}
             >
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient from-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient from-transparent to-black/40 opacity-0 group-active:opacity-100 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
-              <div className="max-w-md backdrop-blur-sm absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-black/5 via-black/30 to-black/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-500 rounded-lg">
+              <div className="max-w-md backdrop-blur-sm absolute left-2 bottom-2 p-4 text-white bg-gradient-to-br from-black/5 via-black/30 to-black/5 opacity-0 group-hover:opacity-100 group-active:opacity-100  transition-all duration-500 delay-500 rounded-lg">
                 <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-100 to-green-300">
                   {project.title}
                 </h2>
