@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   return (
-    <div className="relative h-[110vh] bg-white">
+    <div className="relative h-[110vh] bg-white overflow-x-hidden">
       <div className="min-h-screen flex items-center px-5 md:px-7 lg:px-10">
         <div className="uppercase font-bold">
           <div className="z-10 overflow-hidden">
