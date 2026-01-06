@@ -22,7 +22,6 @@ const Footer = () => {
       transition: {
         duration: 0.5,
         delay: i * 0.1,
-        ease: "easeInOut",
       },
     }),
   };
@@ -30,7 +29,7 @@ const Footer = () => {
   return (
     <div
       id="contact"
-      className="z-30 relative h-dvh overflow-hidden text-green-950 bg-gradient-to-br from-white via-green-200 to-white"
+      className="z-30 relative h-dvh overflow-hidden text-green-950 bg-linear-to-br from-white via-green-200 to-white"
     >
       {/* Petals container */}
       <div
