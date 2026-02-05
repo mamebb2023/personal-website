@@ -124,7 +124,7 @@ export const projects = [
     title: "SanAI | Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
-    links: ["https://sanai.live/"],
+    links: ["https://sanai-nu.vercel.app/"],
     duration: "May 2025 - Jul 2025",
     features: [
       "AI Voice Chatbot",
