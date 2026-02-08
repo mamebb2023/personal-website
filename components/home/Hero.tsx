@@ -103,8 +103,15 @@ const Hero = () => {
 
       </div>
 
-      <div id="about" className="flex-center h-screen">
-        <h1 className="text font-bold max-w-[500px] text text-[2em] uppercase tracking-wider transition-all text-gray-500/10 text-center">
+      <div id="about" className="hidden md:flex-center h-screen px-6">
+        <h1 className="text font-bold max-w-[500px] text-2xl md:text-lg lg:text-4xl uppercase tracking-wider transition-all text-gray-500/10 text-center">
+          I&apos;m a Full-Stack Web Developer passionate about designing intuitive
+          front-end interfaces and building robust back-end systems.
+        </h1>
+      </div>
+
+      <div className="md:hidden flex-center h-screen px-6">
+        <h1 className="font-bold max-w-[500px] text-2xl md:text-lg lg:text-4xl uppercase tracking-wider transition-all text-white text-center">
           I&apos;m a Full-Stack Web Developer passionate about designing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>
