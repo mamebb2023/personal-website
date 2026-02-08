@@ -4,9 +4,8 @@ import ReactLenis from "lenis/react";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Mohammednur | Software Engineer",
-  description:
-    "Works of Mohammednur, a software engineer specializing in web development.",
+  title: "Mohammednur | Web Designer and Developer",
+  description: "",
   keywords: [],
   formatDetection: {
     telephone: false,

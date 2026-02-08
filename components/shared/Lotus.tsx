@@ -8,7 +8,8 @@ interface LotusProps {
   size?: string;
   gradient?: string;
   petalCount?: number;
-  animatePetals?: boolean; // ✅ toggle flicker animation
+  animatePetals?: boolean;
+  dispayDelay?: number;
 }
 
 const Lotus: React.FC<LotusProps> = ({
@@ -16,6 +17,7 @@ const Lotus: React.FC<LotusProps> = ({
   gradient = "bg-gradient-to-b from-[2%] from-pink-700/80 via-[40%] via-pink-400 to-[70%] to-white/70",
   petalCount = 7,
   animatePetals = true,
+  dispayDelay = 0
 }) => {
   const centerIndex = Math.floor(petalCount / 2);
   const angleSpread = 150;
@@ -24,7 +26,7 @@ const Lotus: React.FC<LotusProps> = ({
   const petals = Array.from({ length: petalCount }, (_, i) => {
     const angle = startAngle + (i * angleSpread) / (petalCount - 1);
     const distanceFromCenter = Math.abs(i - centerIndex);
-    const opacity = 0.8 - distanceFromCenter * 0.2;
+    const opacity = 0.9 - distanceFromCenter * 0.2;
     return { angle, opacity, distanceFromCenter };
   });
 
@@ -48,9 +50,8 @@ const Lotus: React.FC<LotusProps> = ({
     },
   };
 
-  // ✅ Flickering animation (can be toggled)
   useEffect(() => {
-    if (!animatePetals) return; // 🔒 skip if disabled
+    if (!animatePetals) return;
 
     const interval = setInterval(() => {
       petalRefs.current.forEach((el, i) => {
@@ -73,13 +74,13 @@ const Lotus: React.FC<LotusProps> = ({
           delay: 0.5 + i * 0.1,
         });
       });
-    }, 4000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [animatePetals, petals]);
 
   return (
-    <div className="relative flex items-center justify-center min-w-20">
+    <div className="relative flex items-center justify-center">
       {petals.map((_, index) => (
         <motion.div
           key={index}

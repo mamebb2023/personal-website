@@ -6,88 +6,140 @@ import { ScrollParallax } from "react-just-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Lotus from "../shared/Lotus";
+import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+
+  useEffect(() => {
+    gsap.to("#lotus", {
+      right: "50%",
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    })
+
+    const text = SplitType.create(".text", {
+      types: "chars,words",
+    })
+
+    gsap.to(text.chars, {
+      color: "white",
+      stagger: 0.2,
+      duration: 1.5,
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+        end: "bottom+=1500 bottom",
+        scrub: 0,
+        pin: true,
+      },
+    })
+
+    // gsap.to(".circle-anim", {
+    //   height: "100vh",
+    //   width: "100vw",
+    //   scrollTrigger: {
+    //     trigger: "#about",
+    //     start: "top top",
+    //     end: "bottom bottom",
+    //     scrub: 1,
+    //     pin: true
+    //   },
+    // })
+  }, [])
   return (
-    <div className="relative h-[110vh] bg-white ">
-      <div className="absolute bottom-0 right-0">
-        <Lotus gradient="bg-gradient-to-b from-green-500 to-green-200/50" />
+    <div id="hero" className="relative">
+      <div id="lotus" className="fixed -z-1 right-0 top-1/2">
+        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
       </div>
 
-      <div className="min-h-screen flex items-center px-5 md:px-7 lg:px-10">
-        <div className="uppercase font-bold">
-          <div className="z-10 overflow-hidden">
-            <motion.p
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Hello! I'm
-            </motion.p>
-          </div>
+      <div className="h-screen p-6 flex flex-col gap-1 justify-center">
+        <div className="relative">
+          <Reveal text="Hello! I'm" className="font-bold uppercase" />
 
-          <ScrollParallax isAbsolutelyPositioned strength={0.3}>
-            <div className="overflow-hidden absolute top-1/3 right-0">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 0.3,
-                  ease: [0.45, 0, 0.55, 1],
-                }}
-                className="text-5xl md:text-7xl lg:text-9xl"
+          <ScrollParallax isAbsolutelyPositioned strength={0.2}>
+            <div className="absolute -top-1/3 -right-1/4">
+              <Reveal
+                text="Mohammednur"
+                plusDelay={1.2}
+                stagger={0.08}
+                className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
                 }}
-              >
-                Mohammednur
-              </motion.p>
+              />
             </div>
           </ScrollParallax>
 
-          <ScrollParallax>
-            <div className="overflow-hidden">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 0.6,
-                  ease: [0.45, 0, 0.55, 1],
-                }}
-                className="relative text-5xl md:text-7xl lg:text-9xl"
-              >
-                Mohammednur
-              </motion.p>
-            </div>
-          </ScrollParallax>
+          <Reveal
+            text="Mohammednur"
+            plusDelay={1}
+            stagger={0.05}
+            className="relative font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
+          />
 
-          <ScrollParallax isAbsolutelyPositioned strength={0.4}>
-            <div className="overflow-hidden absolute bottom-[37%] -left-20">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 1.1,
-                  ease: [0.45, 0, 0.55, 1],
-                }}
-                className="text-5xl md:text-7xl lg:text-9xl"
+          <ScrollParallax isAbsolutelyPositioned strength={0.03}>
+            <div className="absolute -bottom-1/2 -left-1/4 text-stroke">
+              <Reveal
+                text="Mohammednur"
+                plusDelay={1.2}
+                stagger={0.08}
+                className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
                 }}
-              >
-                Mohammednur
-              </motion.p>
+              />
             </div>
           </ScrollParallax>
         </div>
+
+
       </div>
+
+      <div id="about" className="flex-center h-screen">
+        <h1 className="text font-bold max-w-[500px] text text-[2em] uppercase tracking-wider transition-all text-gray-500/10 text-center">
+          I&apos;m a Full-Stack Web Developer passionate about designing intuitive
+          front-end interfaces and building robust back-end systems.
+        </h1>
+      </div>
+
+      <div className="circle-anim h-screen bg-gradient-to-b from-transparent to-white" />
+    </div>
+  );
+};
+
+const Reveal = ({
+  className,
+  text,
+  plusDelay = 0,
+  stagger = 0,
+  style,
+}: { className: string; text: string; plusDelay?: number; stagger?: number, style?: React.CSSProperties }) => {
+  return (
+    <div className="z-10 overflow-hidden">
+      {Array.from(text).map((c, index) => (
+        <motion.span
+          key={index}
+          initial={{ y: "100%" }}
+          animate={{ y: "0%" }}
+          transition={{
+            duration: 1,
+            delay: plusDelay + (stagger * index),
+            ease: [0.85, 0.09, 0.15, 0.91]
+          }}
+          className={`${className} inline-block`}
+          style={style}
+        >
+          {c === " " ? "\u00A0" : c}
+        </motion.span>
+      ))}
     </div>
   );
 };
