@@ -54,7 +54,11 @@ const Hero = () => {
   }, [])
   return (
     <div id="hero" className="relative">
-      <div id="lotus" className="fixed -z-1 right-0 top-1/2">
+      <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
+        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
+      </div>
+
+      <div className="md:hidden absolute -z-1 right-0 top-1/4">
         <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
       </div>
 
@@ -67,7 +71,7 @@ const Hero = () => {
               <Reveal
                 text="Mohammednur"
                 plusDelay={1.2}
-                stagger={0.08}
+                stagger={0.04}
                 className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
@@ -80,16 +84,16 @@ const Hero = () => {
           <Reveal
             text="Mohammednur"
             plusDelay={1}
-            stagger={0.05}
+            stagger={0.04}
             className="relative font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
           />
 
-          <ScrollParallax isAbsolutelyPositioned strength={0.03}>
+          <ScrollParallax isAbsolutelyPositioned strength={0.04}>
             <div className="absolute -bottom-1/2 -left-1/4 text-stroke">
               <Reveal
                 text="Mohammednur"
                 plusDelay={1.2}
-                stagger={0.08}
+                stagger={0.05}
                 className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
@@ -103,21 +107,21 @@ const Hero = () => {
 
       </div>
 
-      <div id="about" className="hidden md:flex-center h-screen px-6">
-        <h1 className="text font-bold max-w-[500px] text-2xl md:text-lg lg:text-4xl uppercase tracking-wider transition-all text-gray-500/10 text-center">
+      <div id="about" className="hidden md:flex justify-center items-center h-screen px-6">
+        <h1 className="text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-gray-500/10 text-center">
           I&apos;m a Full-Stack Web Developer passionate about designing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>
       </div>
 
-      <div className="md:hidden flex-center h-screen px-6">
-        <h1 className="font-bold max-w-[500px] text-2xl md:text-lg lg:text-4xl uppercase tracking-wider transition-all text-white text-center">
+      <div className="md:hidden flex justify-center items-center h-screen px-6">
+        <h1 className="font-bold max-w-[500px] text-3xl uppercase tracking-wider transition-all text-green-950 text-center">
           I&apos;m a Full-Stack Web Developer passionate about designing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>
       </div>
 
-      <div className="circle-anim h-screen bg-gradient-to-b from-transparent to-white" />
+      <div className="hidden md:block circle-anim h-screen bg-gradient-to-b from-transparent to-white" />
     </div>
   );
 };
