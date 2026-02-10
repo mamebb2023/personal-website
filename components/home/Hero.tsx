@@ -40,17 +40,17 @@ const Hero = () => {
       },
     })
 
-    // gsap.to(".circle-anim", {
-    //   height: "100vh",
-    //   width: "100vw",
-    //   scrollTrigger: {
-    //     trigger: "#about",
-    //     start: "top top",
-    //     end: "bottom bottom",
-    //     scrub: 1,
-    //     pin: true
-    //   },
-    // })
+    gsap.to(".circle-anim", {
+      height: "100vh",
+      width: "100vw",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        pin: true
+      },
+    })
   }, [])
   return (
     <div id="hero" className="relative">
@@ -121,7 +121,7 @@ const Hero = () => {
         </h1>
       </div>
 
-      <div className="hidden md:block circle-anim h-screen bg-gradient-to-b from-transparent to-white" />
+      <div className="hidden md:block circle-anim h-[50vh] bg-gradient-to-b from-transparent via-whtie to-white" />
     </div>
   );
 };
