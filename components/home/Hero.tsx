@@ -47,7 +47,7 @@ const Hero = () => {
   return (
     <div id="hero" className="relative">
       <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
-        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
+        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-500 to-green-200/5" />
       </div>
 
       <div className="h-screen p-6 flex flex-col gap-1 justify-center">
@@ -100,7 +100,7 @@ const Hero = () => {
         </h1>
       </div>
 
-      <div className="h-[50vh] bg-gradient-to-b from-transparent via-white to-white" />
+      <div className="h-[50vh] bg-gradient-to-b from-transparent via-white/70 to-white" />
     </div>
   );
 };

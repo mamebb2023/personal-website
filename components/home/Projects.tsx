@@ -16,7 +16,6 @@ const Projects = () => {
       type: "chars",
     });
 
-    // Initial state per character
     gsap.set(split.chars, {
       filter: "blur(10px)",
       scale: 1.5,
@@ -24,39 +23,105 @@ const Projects = () => {
       willChange: "filter, opacity, transform",
     });
 
-    const tl = gsap.timeline({
+    gsap.set("#overlay-lotus", {
+      opacity: 0,
+    });
+
+    gsap.set("#overlay-line", {
+      clipPath: "inset(100% 0% 0% 0%)",
+    });
+
+    gsap.set("#overlay-leaf", {
+      opacity: 0,
+      rotation: -10,
+    });
+
+    gsap.set(".overlay-circle", {
+      scale: 0,
+    });
+
+    gsap.timeline({
       scrollTrigger: {
         trigger: "#projects-title-container",
         start: "top top",
-        end: "+=200%",
+        end: "bottom center",
         pin: true,
         scrub: true,
-        // markers: true,
       },
+    })
+      .to(split.chars, {
+        filter: "blur(0px)",
+        scale: 1,
+        opacity: 1,
+        stagger: 0.05,
+        ease: "none",
+        duration: 0.5,
+      })
+
+    ScrollTrigger.create({
+      trigger: "#projects",
+      start: "top top",
+      end: "bottom bottom",
+      pin: "#overlay-container",
+      pinSpacing: false,
     });
 
-    // Blur → clear
-    tl.to(split.chars, {
-      filter: "blur(0px)",
-      scale: 1,
-      opacity: 1,
-      stagger: 0.04,
-      ease: "none",
-      duration: 1,
+    // nature components animation
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top center",
+        end: "+=100%",
+        toggleActions: "play none none reverse",
+      },
     })
-
-      // Hold
-      .to({}, { duration: 0.1 })
-
-      // Clear → blur
-      .to(split.chars, {
-        filter: "blur(10px)",
-        scale: 1.5,
-        opacity: 0,
-        stagger: 0.04,
-        ease: "none",
+      .to("#overlay-line", {
+        clipPath: "inset(0% 0% 0% 0%)",
+        duration: 0.5,
+        delay: 0.1,
+        ease: "power2.inOut",
+      })
+      .to("#overlay-lotus", {
+        opacity: 1,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out",
+      }, "-=0.2")
+      .to("#overlay-leaf", {
+        opacity: 1,
+        rotation: 10,
         duration: 1,
-      });
+        delay: 0.387,
+        ease: "power2.out",
+      }, "-=0.4")
+      .to(".overlay-circle", {
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        delay: -1,
+        ease: "back.out(1.7)",
+      }, "-=0.5");
+
+    // Ongoing leaf rotation animation
+    gsap.set("#overlay-leaf", {
+      transformOrigin: "left bottom",
+    });
+
+    gsap.to("#overlay-leaf", {
+      rotation: 20,
+      duration: 2.5,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+    });
+
+    gsap.to(".circle-box", {
+      rotation: -45,
+      duration: 15,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+    })
 
     return () => {
       split.revert();
@@ -66,17 +131,27 @@ const Projects = () => {
 
   return (
     <div id="projects" className="relative min-h-screen bg-white">
-      {/* overlay nature animation for the projects */}
-      <div id="overlay-items" className="sticky w-screen h-screen top-0 left-0">
+      {/* nature overlay */}
+      <div id="overlay-container" className="absolute top-0 left-0 w-screen h-screen">
+        {/* lotus */}
         <div className="absolute bottom-0 left-20 flex items-center flex-col">
-          <Lotus size="h-[50px] w-[30px]" gradient="bg-gradient-to-b from-[2%] from-green-500/80 via-[40%] via-green-400 to-[70%] to-white/70" />
-          {/* <div className="border border-green-500 size-10 rounded-full" /> */}
-          <div className="h-40 w-px bg-green-500" />
-          <div className="absolute top-1/3 -left-1/2 rotate-10 bg-green-500 w-10 h-5 rounded-tl-full rounded-br-full" />
+          <div id="overlay-lotus">
+            <Lotus size="h-[50px] w-[30px]" gradient="bg-gradient-to-b from-green-500 to-transparent" />
+          </div>
+          <div id="overlay-line" className="h-40 w-px bg-gradient-to-b from-transparent via-green-500/50 to-green-500" />
+          <div id="overlay-leaf" className="absolute top-1/3 -left-1/2 bg-green-500 w-10 h-5 rounded-tl-full rounded-br-full" />
+        </div>
+
+
+        <div className="circle-box absolute -top-40 -left-40 size-80 rotate-">
+          <div className="overlay-circle size-full border border-green-500 rounded-full flex-center">
+            <div className="overlay-circle size-[80%] bg-green-500 rounded-full" />
+            <div className="overlay-circle absolute -bottom-20 left-30 size-[60%] bg-green-500/30 rounded-full" />
+          </div>
         </div>
       </div>
 
-      <div id="projects-title-container" className="h-screen flex-center">
+      <div id="projects-title-container" className="relative h-screen flex-center">
         <h1 id="projects-text" className="text-7xl">
           Projects
         </h1>
