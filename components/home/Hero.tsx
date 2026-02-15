@@ -23,42 +23,30 @@ const Hero = () => {
       },
     })
 
-    const text = SplitType.create(".text", {
+    const text = new SplitType(".hero-about-text", {
       types: "chars,words",
     })
 
     gsap.to(text.chars, {
       color: "white",
-      stagger: 0.2,
-      duration: 1.5,
+      stagger: 0.05,
       scrollTrigger: {
         trigger: "#about",
         start: "top top",
         end: "bottom+=1500 bottom",
-        scrub: 0,
+        scrub: 1,
         pin: true,
       },
     })
 
-    gsap.to(".circle-anim", {
-      height: "100vh",
-      width: "100vw",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        pin: true
-      },
-    })
+    return () => {
+      text.revert();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, [])
   return (
     <div id="hero" className="relative">
       <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
-        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
-      </div>
-
-      <div className="md:hidden absolute -z-1 right-0 top-1/4">
         <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-400 to-green-200/10" />
       </div>
 
@@ -103,25 +91,16 @@ const Hero = () => {
             </div>
           </ScrollParallax>
         </div>
-
-
       </div>
 
       <div id="about" className="hidden md:flex justify-center items-center h-screen px-6">
-        <h1 className="text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-gray-500/10 text-center">
+        <h1 className="hero-about-text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-green-500/10 text-center">
           I&apos;m a Full-Stack Web Developer passionate about designing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>
       </div>
 
-      <div className="md:hidden flex justify-center items-center h-screen px-6">
-        <h1 className="font-bold max-w-[500px] text-3xl uppercase tracking-wider transition-all text-green-950 text-center">
-          I&apos;m a Full-Stack Web Developer passionate about designing intuitive
-          front-end interfaces and building robust back-end systems.
-        </h1>
-      </div>
-
-      <div className="hidden md:block circle-anim h-[50vh] bg-gradient-to-b from-transparent via-whtie to-white" />
+      <div className="h-[50vh] bg-gradient-to-b from-transparent via-white to-white" />
     </div>
   );
 };
