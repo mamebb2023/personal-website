@@ -13,7 +13,7 @@ interface LotusProps {
 }
 
 const Lotus: React.FC<LotusProps> = ({
-  size = "h-[600px] w-[280px]",
+  size = "h-[600px] w-[320px]",
   gradient = "bg-gradient-to-b from-[2%] from-pink-700/80 via-[40%] via-pink-400 to-[70%] to-white/70",
   petalCount = 7,
   animatePetals = true,
@@ -58,7 +58,7 @@ const Lotus: React.FC<LotusProps> = ({
         if (!el) return;
 
         const baseAngle = petals[i].angle;
-        const flickAngle = baseAngle + (Math.random() * 6 - 3);
+        const flickAngle = baseAngle + (Math.random() * 6);
 
         gsap.to(el, {
           rotate: flickAngle,
@@ -74,7 +74,7 @@ const Lotus: React.FC<LotusProps> = ({
           delay: 0.5 + i * 0.1,
         });
       });
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [animatePetals, petals]);

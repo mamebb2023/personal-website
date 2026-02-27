@@ -61,7 +61,8 @@ export const links = [
 export const projects = [
   {
     color: "#dc00c9",
-    title: "LotusFlow | Live React Component Generator",
+    title: "LotusFlow",
+    mini_title: "React Component Generator",
     description: "AI-powered tool to generate React components just from text prompts.",
     role: "Full Stack Developer",
     links: ["https://lotusflow.vercel.app/"],
@@ -88,7 +89,8 @@ export const projects = [
   },
   {
     color: "#6BCF91",
-    title: "WeMD Africa - Online Dermatology Clinic",
+    title: "WeMD Africa",
+    mini_title: "Online Dermatology Clinic",
     description: "Connecting patients with dermatologists across Africa.",
     role: "Front-end Developer",
     links: ["https://wemd-africa.vercel.app/"],
@@ -121,7 +123,8 @@ export const projects = [
   {
     color: "#00D9FF",
     forClient: true,
-    title: "SanAI | Your Personal AI Doctor",
+    title: "SanAI",
+    mini_title: "Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
     links: ["https://sanai-nu.vercel.app/"],
@@ -145,7 +148,8 @@ export const projects = [
   },
   {
     color: "#8c00ff",
-    title: "Brainwave | Modern & Responsive React Website",
+    title: "Brainwave",
+    mini_title: "Modern & Responsive React Website",
     description:
       "A sleek and modern React website showcasing the latest in web design.",
     role: "Front-end Developer",
@@ -172,7 +176,8 @@ export const projects = [
   },
   {
     color: "#008c00",
-    title: "Ethio-Commerce | Secure & User-Friendly E-Commerce",
+    title: "Ethio-Commerce",
+    mini_title: "Secure & User-Friendly E-Commerce",
     description: "E-commerce platform designed to simplify online shopping",
     role: "Front-end Developer",
     links: ["https://github.com/mamebb2023/ethio-commerce/"],

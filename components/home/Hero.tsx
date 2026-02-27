@@ -44,10 +44,11 @@ const Hero = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [])
+
   return (
     <div id="hero" className="relative">
       <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
-        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-green-500 to-green-200/5" />
+        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-emerald-500 via-green-500/50 to-transparent" />
       </div>
 
       <div className="h-screen p-6 flex flex-col gap-1 justify-center">
