@@ -241,8 +241,8 @@ const Projects = () => {
                 {projects.map((project, projectIndex) => (
                   <Image
                     key={projectIndex}
-                    // src={project.images[imgIndex]}
-                    src={project.images[0]}
+                    src={project.images[imgIndex]}
+                    // src={project.images[0]}
                     width={1000}
                     height={1000}
                     alt={`${project.title} image ${imgIndex}`}

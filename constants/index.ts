@@ -65,7 +65,7 @@ export const projects = [
     mini_title: "React Component Generator",
     description: "AI-powered tool to generate React components just from text prompts.",
     role: "Full Stack Developer",
-    links: ["https://lotusflow.vercel.app/"],
+    links: { live: "https://lotusflow.vercel.app/" },
     duration: "Aug 2025 - Present",
     features: [
       "AI-Powered Component Generation",
@@ -82,8 +82,6 @@ export const projects = [
       "/assets/lotusflow/lotusflow-3.png",
       "/assets/lotusflow/lotusflow-4.png",
       "/assets/lotusflow/lotusflow-5.png",
-      "/assets/lotusflow/lotusflow-6.png",
-      "/assets/lotusflow/lotusflow-7.png",
     ],
     bestProject: true,
   },
@@ -93,7 +91,7 @@ export const projects = [
     mini_title: "Online Dermatology Clinic",
     description: "Connecting patients with dermatologists across Africa.",
     role: "Front-end Developer",
-    links: ["https://wemd-africa.vercel.app/"],
+    links: { live: "https://wemd-africa.vercel.app/" },
     duration: "Nov 2024 - Dec 2024",
     features: [
       "Light/Dark Theme",
@@ -110,12 +108,6 @@ export const projects = [
       "/assets/wemd/wemd-3.jpg",
       "/assets/wemd/wemd-4.jpg",
       "/assets/wemd/wemd-5.jpg",
-      "/assets/wemd/wemd-6.jpg",
-      "/assets/wemd/wemd-7.jpg",
-      "/assets/wemd/wemd-8.jpg",
-      "/assets/wemd/wemd-9.jpg",
-      "/assets/wemd/wemd-10.jpg",
-      "/assets/wemd/wemd-11.jpg",
     ],
     bestProject: true,
     forClient: true,
@@ -127,7 +119,7 @@ export const projects = [
     mini_title: "Your Personal AI Doctor",
     description: "AI-powered health assistant for personalized care.",
     role: "Full Stack Developer",
-    links: ["https://sanai-nu.vercel.app/"],
+    links: { live: "https://sanai-nu.vercel.app/" },
     duration: "May 2025 - Jul 2025",
     features: [
       "AI Voice Chatbot",
@@ -153,10 +145,10 @@ export const projects = [
     description:
       "A sleek and modern React website showcasing the latest in web design.",
     role: "Front-end Developer",
-    links: [
-      "https://brainwave-iota-five-26.vercel.app/",
-      "https://github.com/mamebb2023/brainwave/",
-    ],
+    links: {
+      live: "https://brainwave-iota-five-26.vercel.app/",
+      code: "https://github.com/mamebb2023/brainwave/",
+    },
     duration: "Feb 2024 - Mar 2024",
     features: [
       "Responsive Design",
@@ -175,19 +167,16 @@ export const projects = [
     ],
   },
   {
-    color: "#008c00",
-    title: "Ethio-Commerce",
-    mini_title: "Secure & User-Friendly E-Commerce",
-    description: "E-commerce platform designed to simplify online shopping",
-    role: "Front-end Developer",
-    links: ["https://github.com/mamebb2023/ethio-commerce/"],
-    features: [
-      "Secure Login System",
-      "Easy Cart Management",
-      "Streamlined Admin Tools",
-    ],
-    logo: "/assets/et/et-logo.png",
-    images: ["/assets/et/et-1.png"],
+    color: "#1010a0",
+    title: "CalHabit - Habit tracking web app",
+    description:
+      "Modern habit tracker designed to help you stay on top of your goals",
+
+    role: "Full Stack Developer",
+    links: { live: "https://cal-habit.vercel.app/", code: "https://github.com/mamebb2023/CalHabit" },
+    features: ["Easy Habit Tracking", "Responsive Design"],
+    logo: "/assets/calhabit/calhabit-logo.png",
+    images: ["/assets/calhabit/calhabit-1.webp"],
   },
 ];
 
@@ -214,16 +203,19 @@ export const miniProjects = [
     image: "/assets/devflow/devflow-1.png",
   },
   {
-    color: "#1010a0",
-    title: "CalHabit - Habit tracking web app",
-    description:
-      "Modern habit tracker designed to help you stay on top of your goals",
-
-    role: "Full Stack Developer",
-    links: ["https://cal-habit.vercel.app/", "https://github.com/mamebb2023/CalHabit"],
-    features: ["Easy Habit Tracking", "Responsive Design"],
-    logo: "/assets/calhabit/calhabit-logo.png",
-    image: "/assets/calhabit/calhabit-1.webp",
+    color: "#008c00",
+    title: "Ethio-Commerce",
+    mini_title: "Secure & User-Friendly E-Commerce",
+    description: "E-commerce platform designed to simplify online shopping",
+    role: "Front-end Developer",
+    links: ["https://github.com/mamebb2023/ethio-commerce/"],
+    features: [
+      "Secure Login System",
+      "Easy Cart Management",
+      "Streamlined Admin Tools",
+    ],
+    logo: "/assets/et/et-logo.png",
+    images: ["/assets/et/et-1.png"],
   },
   {
     color: "#056c0f",
