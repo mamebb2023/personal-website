@@ -241,11 +241,11 @@ const Projects = () => {
                 {projects.map((project, projectIndex) => (
                   <Image
                     key={projectIndex}
-                    src={project.images[imgIndex]}
+                    src={project.images[imgIndex + 1]}
                     // src={project.images[0]}
                     width={1000}
                     height={1000}
-                    alt={`${project.title} image ${imgIndex}`}
+                    alt={`${project.title} image ${imgIndex + 1}`}
                     className="block w-full h-full object-cover rounded-lg shadow-xl"
                     draggable={false}
                   />
@@ -283,7 +283,7 @@ const Projects = () => {
                     width={1000}
                     height={1000}
                     alt={`${index} ${project.title} image`}
-                    className="relative w-[500px] rounded-lg"
+                    className="relative w-[500px] rounded-lg shadow-xl"
                     draggable={false}
                   />
                 </div>

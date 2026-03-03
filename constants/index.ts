@@ -62,7 +62,7 @@ export const projects = [
   {
     color: "#dc00c9",
     title: "LotusFlow",
-    mini_title: "React Component Generator",
+    mini_title: "AI-Powered React Component Generator",
     description: "AI-powered tool to generate React components just from text prompts.",
     role: "Full Stack Developer",
     links: { live: "https://lotusflow.vercel.app/" },
@@ -82,6 +82,7 @@ export const projects = [
       "/assets/lotusflow/lotusflow-3.png",
       "/assets/lotusflow/lotusflow-4.png",
       "/assets/lotusflow/lotusflow-5.png",
+      "/assets/lotusflow/lotusflow-6.png",
     ],
     bestProject: true,
   },
@@ -108,6 +109,7 @@ export const projects = [
       "/assets/wemd/wemd-3.jpg",
       "/assets/wemd/wemd-4.jpg",
       "/assets/wemd/wemd-5.jpg",
+      "/assets/wemd/wemd-6.jpg",
     ],
     bestProject: true,
     forClient: true,
@@ -136,12 +138,13 @@ export const projects = [
       "/assets/sanai/sanai-3.png",
       "/assets/sanai/sanai-4.png",
       "/assets/sanai/sanai-5.png",
+      "/assets/sanai/sanai-6.png",
     ],
   },
   {
     color: "#8c00ff",
     title: "Brainwave",
-    mini_title: "Modern & Responsive React Website",
+    mini_title: "Modern & Responsive SaaS Landing Page",
     description:
       "A sleek and modern React website showcasing the latest in web design.",
     role: "Front-end Developer",
@@ -164,11 +167,13 @@ export const projects = [
       "/assets/brainwave/brainwave-3.png",
       "/assets/brainwave/brainwave-4.png",
       "/assets/brainwave/brainwave-5.png",
+      "/assets/brainwave/brainwave-6.png",
     ],
   },
   {
     color: "#1010a0",
-    title: "CalHabit - Habit tracking web app",
+    title: "CalHabit",
+    mini_title: "Habit tracking web app",
     description:
       "Modern habit tracker designed to help you stay on top of your goals",
 
@@ -176,7 +181,14 @@ export const projects = [
     links: { live: "https://cal-habit.vercel.app/", code: "https://github.com/mamebb2023/CalHabit" },
     features: ["Easy Habit Tracking", "Responsive Design"],
     logo: "/assets/calhabit/calhabit-logo.png",
-    images: ["/assets/calhabit/calhabit-1.webp"],
+    images: [
+      "/assets/calhabit/calhabit-1.png",
+      "/assets/calhabit/calhabit-2.png",
+      "/assets/calhabit/calhabit-3.png",
+      "/assets/calhabit/calhabit-4.png",
+      "/assets/calhabit/calhabit-5.png",
+      "/assets/calhabit/calhabit-6.png",
+    ],
   },
 ];
 
