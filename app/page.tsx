@@ -3,6 +3,7 @@
 import Header from "@/components/home/Header";
 import Hero from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
+import Testimonials from "@/components/home/Testimonials";
 import React from "react";
 import { motion } from "framer-motion"
 
@@ -15,6 +16,7 @@ const Page = () => {
       <Header />
       <Hero />
       <Projects />
+      <Testimonials />
     </motion.div>
   );
 };

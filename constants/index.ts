@@ -256,3 +256,41 @@ export const miniProjects = [
     image: "/assets/maze/maze-1.png",
   },
 ];
+
+export const testimonials = [
+  {
+    name: "Yared Haile",
+    role: "CEO, WeMD Africa",
+    avatar: "YH",
+    color: "#6BCF91",
+    text: "Mohammednur delivered a stunning, fully responsive platform that exceeded every expectation. His attention to detail and ability to translate complex requirements into clean, intuitive UI is remarkable. The localization and animation work was top-tier.",
+  },
+  {
+    name: "Liya Tesfaye",
+    role: "Product Manager, SanAI",
+    avatar: "LT",
+    color: "#00D9FF",
+    text: "Working with Mohammednur was an absolute pleasure. He built our AI health app from scratch, integrating voice chat and image recognition seamlessly. His full-stack skills and proactive communication made the whole process smooth and efficient.",
+  },
+  {
+    name: "Daniel Worku",
+    role: "Startup Founder",
+    avatar: "DW",
+    color: "#dc00c9",
+    text: "I hired Mohammednur for a complex React project and was blown away by the quality of work. He's not just a developer — he thinks like a designer too. LotusFlow is proof of that. Efficient, talented, and reliable.",
+  },
+  {
+    name: "Sara Bekele",
+    role: "Frontend Lead, DevCo",
+    avatar: "SB",
+    color: "#8c00ff",
+    text: "Mohammednur is the kind of developer every team wants. He writes clean, maintainable code and has a sharp eye for UX. He jumped into our codebase quickly and delivered high-quality components on a tight deadline.",
+  },
+  {
+    name: "Abebe Girma",
+    role: "CTO, FinTech Startup",
+    avatar: "AG",
+    color: "#ff8c00",
+    text: "Outstanding full-stack skills. Mohammednur built and deployed our entire web app with great performance and security in mind. He was always available, communicated clearly, and never missed a deadline.",
+  },
+];

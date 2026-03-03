@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Lotus from "../shared/Lotus";
 import Image from "next/image";
+import { BiCode } from "react-icons/bi";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -215,9 +217,21 @@ const Projects = () => {
       </div>
 
       <div id="projects-title-container" className="relative h-screen flex-center">
-        <h1 id="projects-text" className="text-7xl uppercase tracking-[15px]">
-          Projects
-        </h1>
+        <div className="flex-center flex-col">
+          <div
+            id="quote-mark"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30vw] font-bold leading-none text-green-500/5 select-none pointer-events-none"
+            aria-hidden="true"
+          >
+            "
+          </div>
+          <p className="text-green-500/60 uppercase tracking-[8px] text-sm font-medium">
+            Selected
+          </p>
+          <h1 id="projects-text" className="text-7xl uppercase tracking-[15px]">
+            Projects
+          </h1>
+        </div>
       </div>
 
       {/* Projects container wrapper for pinning */}
@@ -264,8 +278,18 @@ const Projects = () => {
                 {/* title and links */}
                 <div className="flex justify-between">
                   <p className="uppercase">{project.title}</p>
+                  {/* links */}
                   <div className="flex gap-2 items-center">
-                    1 2
+                    {project.links.code && (
+                      <Link href={project.links.code} target="_blank" className="size-7 border border-green-500 rounded-lg text-green-500 flex-center cursor-pointer hover:bg-green-500 hover:text-white transition-all">
+                        <BiCode size={12} />
+                      </Link>
+                    )}
+                    {project.links.live && (
+                      <Link href={project.links.live} target="_blank" className="size-7 border border-green-500 rounded-lg text-green-500 flex-center cursor-pointer hover:bg-green-500 hover:text-white transition-all">
+                        <FaExternalLinkAlt size={12} />
+                      </Link>
+                    )}
                   </div>
                 </div>
 
