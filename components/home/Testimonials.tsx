@@ -61,7 +61,7 @@ const Testimonials = () => {
                 },
             });
 
-            // Staggered card fade-in on scroll
+            // Staggered card fade-in — trigger when the section enters the viewport
             gsap.from(".testimonial-card", {
                 opacity: 0,
                 y: 40,
@@ -70,8 +70,8 @@ const Testimonials = () => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: "#testimonials-scroll-container",
-                    start: "top 80%",
-                    toggleActions: "play none none reverse",
+                    start: "top bottom",
+                    toggleActions: "play none none none",
                 },
             });
 
@@ -178,8 +178,9 @@ const TestimonialCard = ({
         <div
             className="testimonial-card flex-shrink-0 w-[320px] md:w-[400px] bg-white rounded-2xl p-8 flex flex-col gap-6 border border-green-500/10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
             style={{
-                // Subtle per-card tilt to make the layout feel alive
-                transform: `rotate(${index % 2 === 0 ? "0.5deg" : "-0.5deg"})`,
+                // Subtle per-card tilt — use a wrapper variable so GSAP's x/y transforms
+                // on the parent track are not overridden by the card's own style.
+                rotate: index % 2 === 0 ? "0.5deg" : "-0.5deg",
             }}
         >
             {/* Quote icon */}

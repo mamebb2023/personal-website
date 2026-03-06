@@ -96,7 +96,7 @@ const Hero = () => {
 
       <div id="about" className="hidden md:flex justify-center items-center h-screen px-6">
         <h1 className="hero-about-text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-green-500/10 text-center">
-          I&apos;m a Full-Stack Web Developer passionate about designing intuitive
+          I&apos;m a Web Engineer passionate about developing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>
       </div>

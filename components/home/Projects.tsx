@@ -17,10 +17,10 @@ const Projects = () => {
   // random positions for images
   const positions = [
     { top: 20, left: 10 },
-    { top: 75, left: 15 },
-    { top: 10, left: 65 },
+    { top: 75, left: 20 },
+    { top: 5, left: 65 },
     { top: 70, left: 70 },
-    { top: 40, left: 80 },
+    { top: 40, left: 75 },
   ]
   useEffect(() => {
     const split = new SplitText("#projects-text", {
@@ -223,7 +223,7 @@ const Projects = () => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30vw] font-bold leading-none text-green-500/5 select-none pointer-events-none"
             aria-hidden="true"
           >
-            "
+            ;
           </div>
           <p className="text-green-500/60 uppercase tracking-[8px] text-sm font-medium">
             Selected
