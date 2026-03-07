@@ -4,14 +4,14 @@ import { name, socials } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaUpwork } from "react-icons/fa6";
+import { FaUpwork, FaXTwitter } from "react-icons/fa6";
 import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
 import Lotus from "../shared/Lotus";
 
 const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.7 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.5 });
 
   // Name text animation
   const letterVariants = {
@@ -29,8 +29,11 @@ const Footer = () => {
   return (
     <div
       id="contact"
-      className="z-30 relative h-dvh overflow-hidden text-green-950 bg-white"
+      className="z-30 relative h-dvh text-green-950 bg-white overflow-hidden"
     >
+      {/* <div className="absolute right-0 top-0 flex-center">
+        <div className="text-[30em] text-green-800 opacity-10">✦</div>
+      </div> */}
       {/* Petals container */}
       <div
         ref={containerRef}
@@ -72,7 +75,7 @@ const Footer = () => {
                 }}
               >
                 <Link
-                  className={`size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-110 transition-all`}
+                  className={`size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-105 transition-all`}
                   style={{ backgroundColor: social.color }}
                   href={social.link}
                   target="_blank"
@@ -133,6 +136,8 @@ function getSocialIcon(name: string) {
       return <FaLinkedin />;
     case "Upwork":
       return <FaUpwork />;
+    case "X":
+      return <FaXTwitter />;
     default:
       return null;
   }
