@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import Lotus from "@/components/shared/Lotus";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import Footer from "@/components/home/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -150,6 +151,7 @@ const Page = () => {
         <Projects />
         <Testimonials />
       </div>
+      <Footer />
     </motion.div>
   );
 };

@@ -50,21 +50,40 @@ const Testimonials = () => {
 
 			if (!track || !container) return;
 
-			const getScrollAmount = () => track.scrollWidth - container.offsetWidth;
+			const getValues = () => {
+				const containerWidth = container.offsetWidth;
+				const card = track.querySelector(".testimonial-card") as HTMLElement;
 
-			gsap.to(track, {
-				x: () => -getScrollAmount(),
-				ease: "none",
-				scrollTrigger: {
-					trigger: container,
-					start: "top top",
-					end: () => `+=${getScrollAmount()}`,
-					pin: true,
-					scrub: 1,
-					invalidateOnRefresh: true,
-					anticipatePin: 1,
+				const cardWidth = card?.offsetWidth || 0;
+				const totalScroll = track.scrollWidth - containerWidth;
+
+				const startOffset = containerWidth / 2 - cardWidth / 2;
+				const endOffset = totalScroll + startOffset;
+
+				const travel = startOffset + endOffset - cardWidth;
+
+				return { startOffset, endOffset, travel };
+			};
+
+			gsap.fromTo(
+				track,
+				{
+					x: () => getValues().startOffset,
 				},
-			});
+				{
+					x: () => -getValues().endOffset,
+					ease: "none",
+					scrollTrigger: {
+						trigger: container,
+						start: "top top",
+						end: () => `+=${getValues().travel}`,
+						pin: true,
+						scrub: 1,
+						invalidateOnRefresh: true,
+						anticipatePin: 1,
+					},
+				}
+			);
 
 			return () => {
 				split.revert();
@@ -133,7 +152,9 @@ const Testimonials = () => {
 
 				<div className="pointer-events-none absolute inset-y- left-0 w-20 bg-gradient-to-r from-white to-transparent -z-1" />
 				<div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
+
 			</div>
+			<div className="h-[50vh] bg-white"></div>
 		</div>
 	);
 };
