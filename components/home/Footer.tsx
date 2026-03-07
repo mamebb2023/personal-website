@@ -5,87 +5,29 @@ import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaUpwork } from "react-icons/fa6";
+import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import Lotus from "../shared/Lotus";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.7 });
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // Name letters
-      tl.from(".footer-letter", {
-        opacity: 0,
-        y: -20,
-        stagger: 0.1,
+  // Name text animation
+  const letterVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
         duration: 0.5,
-        ease: "power2.out",
-      });
-
-      // Social icons
-      tl.from(
-        ".footer-social",
-        {
-          scale: 0,
-          stagger: 0.2,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3"
-      );
-
-      // Line animation
-      tl.from(
-        ".footer-line",
-        {
-          width: 0,
-          duration: 1,
-          ease: "power2.out",
-        },
-        "-=0.2"
-      );
-
-      // Words animation
-      tl.from(
-        ".footer-word",
-        {
-          opacity: 0,
-          stagger: 0.25,
-          duration: 0.4,
-          ease: "power2.out",
-        },
-        "-=0.6"
-      );
-
-      // Copyright
-      tl.from(
-        ".footer-copyright",
-        {
-          opacity: 0,
-          duration: 0.4,
-        },
-        "-=0.2"
-      );
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
+        delay: i * 0.1,
+      },
+    }),
+  };
 
   return (
     <div
-      ref={footerRef}
       id="contact"
       className="z-30 relative h-dvh overflow-hidden text-green-950 bg-white"
     >
@@ -104,48 +46,80 @@ const Footer = () => {
           {/* Name */}
           <div className="hidden md:flex gap-3">
             {name.map((letter, index) => (
-              <span key={index} className="footer-letter">
+              <motion.span
+                key={index}
+                custom={index}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={letterVariants}
+              >
                 {letter}
-              </span>
+              </motion.span>
             ))}
           </div>
 
           {/* Social Icons */}
           <div className="flex gap-3 text-xl">
             {socials.map((social, index) => (
-              <div key={index} className="footer-social">
+              <motion.div
+                key={index}
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : { scale: 0 }}
+                transition={{
+                  delay: isInView ? 0.7 + index * 0.2 : 0,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+              >
                 <Link
-                  className="size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-110 transition-all"
+                  className={`size-8 rounded-full flex-center text-white flex items-center gap-2 hover:scale-110 transition-all`}
                   style={{ backgroundColor: social.color }}
                   href={social.link}
                   target="_blank"
                 >
                   {getSocialIcon(social.name)}
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Middle text */}
         <div className="flex items-center justify-end gap-2 p-4">
-          <div className="footer-line border-t border-green-950" />
-
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: isInView ? 60 : 0 }}
+            transition={{ duration: 1, delay: isInView ? 1 : 0 }}
+            className="border-t border-green-950"
+          />
           <div className="text-right flex gap-2 items-center justify-end text-sm font-bold">
             {"Designed and Developed with ❤️ by me"
               .split(" ")
               .map((word, index) => (
-                <span key={index} className="footer-word">
+                <motion.span
+                  key={index}
+                  className=""
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{
+                    delay: isInView ? 0.3 + 0.3 * index : 0,
+                    duration: 0.5,
+                  }}
+                >
                   {word}
-                </span>
+                </motion.span>
               ))}
           </div>
         </div>
 
         {/* Bottom Text */}
-        <div className="p-4 flex justify-end text-sm footer-copyright">
+        <motion.div
+          className="p-4 flex justify-end text-sm"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
+        >
           <p className="text-right font-bold">© 2025</p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

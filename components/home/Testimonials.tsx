@@ -150,11 +150,9 @@ const Testimonials = () => {
 					</div> */}
 				</div>
 
-				<div className="pointer-events-none absolute inset-y- left-0 w-20 bg-gradient-to-r from-white to-transparent -z-1" />
+				{/* <div className="pointer-events-none absolute inset-y- left-0 w-20 bg-gradient-to-r from-white to-transparent -z-1" /> */}
 				<div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
-
 			</div>
-			<div className="h-[50vh] bg-white"></div>
 		</div>
 	);
 };

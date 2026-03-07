@@ -98,6 +98,7 @@ const Page = () => {
       repeat: -1,
     })
   }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -151,6 +152,7 @@ const Page = () => {
         <Projects />
         <Testimonials />
       </div>
+      <div className="h-[50vh] bg-white" />
       <Footer />
     </motion.div>
   );
