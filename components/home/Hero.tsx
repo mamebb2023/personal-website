@@ -48,7 +48,11 @@ const Hero = () => {
   return (
     <div id="hero" className="relative">
       <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
-        <Lotus dispayDelay={2} gradient="bg-gradient-to-b from-emerald-500 via-green-500/50 to-transparent" />
+        <Lotus />
+      </div>
+
+      <div className="md:hidden fixed -z-1 right-0 top-1/2">
+        <Lotus />
       </div>
 
       <div className="h-screen p-6 flex flex-col gap-1 justify-center">
@@ -96,6 +100,13 @@ const Hero = () => {
 
       <div id="about" className="hidden md:flex justify-center items-center h-screen px-6">
         <h1 className="hero-about-text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-green-500/10 text-center">
+          I&apos;m a Web Engineer passionate about developing intuitive
+          front-end interfaces and building robust back-end systems.
+        </h1>
+      </div>
+
+      <div className="md:hidden justify-center items-center h-screen px-6">
+        <h1 className="font-bold max-w-[500px] text-2xl uppercase tracking-wider transition-all text-green-900 text-center">
           I&apos;m a Web Engineer passionate about developing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>

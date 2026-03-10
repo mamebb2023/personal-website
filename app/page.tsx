@@ -119,9 +119,9 @@ const Page = () => {
           </div>
 
           {/* top left circles */}
-          <div className="circle-box absolute -top-40 -left-40 size-80 flex-center">
+          <div className="circle-box absolute -top-20 md:-top-40 -left-20 md:-left-40 size-40 md:size-80 flex-center">
             <div className="absolute size-full border border-green-500 rounded-full flex-center overlay-circle" />
-            <div className="absolute -bottom-20 left-30 size-[60%] bg-green-500/30 rounded-full backdrop-blur-xs overlay-circle" />
+            <div className="absolute -bottom-10 md:-bottom-20 -left-15 md:left-30 size-[60%] bg-green-500/30 rounded-full backdrop-blur-xs overlay-circle" />
             <div className="absolute size-[80%] bg-gradient-to-tr from-green-500 to-emerald-500 rounded-full overlay-circle" />
           </div>
 

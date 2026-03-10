@@ -16,11 +16,11 @@ gsap.registerPlugin(SplitText);
 const Projects = () => {
   // random positions for images
   const positions = [
+    { top: 5, left: 65 },
+    { top: 40, left: 75 },
+    { top: 70, left: 70 },
     { top: 20, left: 10 },
     { top: 75, left: 20 },
-    { top: 5, left: 65 },
-    { top: 70, left: 70 },
-    { top: 40, left: 75 },
   ]
   useEffect(() => {
     const split = new SplitText("#projects-text", {
@@ -105,7 +105,7 @@ const Projects = () => {
           <p className="text-green-500/60 uppercase tracking-[8px] text-sm font-medium">
             Selected
           </p>
-          <h1 id="projects-text" className="text-7xl uppercase tracking-[15px]">
+          <h1 id="projects-text" className="text-5xl md:text-7xl uppercase tracking-[15px]">
             Projects
           </h1>
         </div>
@@ -121,7 +121,7 @@ const Projects = () => {
           {positions.map((pos, imgIndex) => (
             <div
               key={imgIndex}
-              className="distributed-img border border-green-500 rounded-xl w-[310px] h-[180px] p-2 overflow-hidden"
+              className={`distributed-img border border-green-500 rounded-xl w-[310px] h-[180px] p-2 overflow-hidden hidden md:block`}
               style={{
                 position: "absolute",
                 top: `calc(${pos.top}% - 4px)`,
@@ -184,7 +184,7 @@ const Projects = () => {
                     width={1000}
                     height={1000}
                     alt={`${index} ${project.title} image`}
-                    className="relative w-[500px] rounded-lg shadow-xl"
+                    className="relative w-[400px] md:w-[500px] rounded-lg shadow-xl"
                     draggable={false}
                   />
                 </div>
@@ -193,9 +193,7 @@ const Projects = () => {
                 <div className="flex justify-between">
                   <p className="">{project.mini_title}</p>
 
-                  <div className="flex gap-2 items-center">
-
-                  </div>
+                  <div className="flex gap-2 items-center" />
                 </div>
               </div>
             </div>

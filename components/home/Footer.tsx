@@ -121,7 +121,7 @@ const Footer = () => {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: isInView ? 1 : 0, duration: 0.5 }}
         >
-          <p className="text-right font-bold">© 2025</p>
+          <p className="text-right font-bold">© {new Date().getFullYear()}</p>
         </motion.div>
       </div>
     </div>

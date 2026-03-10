@@ -111,7 +111,7 @@ const Testimonials = () => {
 				</p>
 				<h2
 					id="testimonials-text"
-					className="text-7xl uppercase tracking-[15px]"
+					className="text-5xl md:text-7xl uppercase tracking-[15px]"
 				>
 					Testimonials
 				</h2>
