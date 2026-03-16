@@ -47,11 +47,7 @@ const Hero = () => {
 
   return (
     <div id="hero" className="relative">
-      <div id="lotus" className="hidden md:block fixed -z-1 right-0 top-1/2">
-        <Lotus />
-      </div>
-
-      <div className="md:hidden fixed -z-1 right-0 top-1/2">
+      <div id="lotus" className="fixed -z-1 right-0 top-1/2">
         <Lotus />
       </div>
 
@@ -65,7 +61,7 @@ const Hero = () => {
                 text="Mohammednur"
                 plusDelay={1.2}
                 stagger={0.04}
-                className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
+                className="font-bold uppercase text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
@@ -78,7 +74,7 @@ const Hero = () => {
             text="Mohammednur"
             plusDelay={1}
             stagger={0.04}
-            className="relative font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
+            className="relative font-bold uppercase text-7xl lg:text-9xl"
           />
 
           <ScrollParallax isAbsolutelyPositioned strength={0.04}>
@@ -87,7 +83,7 @@ const Hero = () => {
                 text="Mohammednur"
                 plusDelay={1.2}
                 stagger={0.05}
-                className="font-bold uppercase text-5xl md:text-7xl lg:text-9xl"
+                className="font-bold uppercase text-7xl lg:text-9xl"
                 style={{
                   WebkitTextStroke: "1px #ABFFBE",
                   WebkitTextFillColor: "transparent",
@@ -98,15 +94,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div id="about" className="hidden md:flex justify-center items-center h-screen px-6">
+      <div id="about" className="flex justify-center items-center h-screen px-6">
         <h1 className="hero-about-text font-bold max-w-[500px] text-4xl uppercase tracking-wider transition-all text-green-500/10 text-center">
-          I&apos;m a Web Engineer passionate about developing intuitive
-          front-end interfaces and building robust back-end systems.
-        </h1>
-      </div>
-
-      <div className="md:hidden justify-center items-center h-screen px-6">
-        <h1 className="font-bold max-w-[500px] text-2xl uppercase tracking-wider transition-all text-green-900 text-center">
           I&apos;m a Web Engineer passionate about developing intuitive
           front-end interfaces and building robust back-end systems.
         </h1>

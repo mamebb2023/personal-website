@@ -111,7 +111,7 @@ const Testimonials = () => {
 				</p>
 				<h2
 					id="testimonials-text"
-					className="text-5xl md:text-7xl uppercase tracking-[15px]"
+					className="text-7xl uppercase tracking-[15px]"
 				>
 					Testimonials
 				</h2>
@@ -130,27 +130,7 @@ const Testimonials = () => {
 					{testimonials.map((t, index) => (
 						<TestimonialCard key={index} testimonial={t} index={index} />
 					))}
-
-					{/* <div className="testimonial-card flex-shrink-0 w-[320px] md:w-[400px] flex flex-col items-center justify-center gap-4 p-8 rounded-2xl border border-dashed border-green-500/30 text-center">
-						<div className="text-4xl">✦</div>
-
-						<p className="text-xl font-bold uppercase tracking-wider text-green-950/50">
-							Work with me
-						</p>
-
-						<p className="text-sm text-green-950/40">
-							Let's build something great together.
-						</p>
-						<Link
-							href="#contact"
-							className="mt-2 px-6 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium hover:bg-green-500 hover:text-white transition-all duration-300"
-						>
-							Get in touch
-						</Link>
-					</div> */}
 				</div>
-
-				{/* <div className="pointer-events-none absolute inset-y- left-0 w-20 bg-gradient-to-r from-white to-transparent -z-1" /> */}
 				<div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
 			</div>
 		</div>
@@ -166,7 +146,7 @@ const TestimonialCard = ({
 }) => {
 	return (
 		<div
-			className="testimonial-card flex-shrink-0 w-[320px] md:w-[400px] bg-white rounded-2xl p-8 flex flex-col gap-6 border border-green-500/10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+			className="testimonial-card flex-shrink-0 w-[400px] bg-white rounded-2xl p-8 flex flex-col gap-6 border border-green-500/10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
 			style={{
 				rotate: index % 2 === 0 ? "0.5deg" : "-0.5deg",
 			}}

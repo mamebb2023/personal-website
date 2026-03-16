@@ -47,7 +47,7 @@ const Footer = () => {
         {/* Top Row */}
         <div className="p-4 flex justify-between">
           {/* Name */}
-          <div className="hidden md:flex gap-3">
+          <div className="flex gap-3">
             {name.map((letter, index) => (
               <motion.span
                 key={index}
