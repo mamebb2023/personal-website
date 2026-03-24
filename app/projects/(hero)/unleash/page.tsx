@@ -30,7 +30,7 @@ export default function HeroSection() {
 
       {/* content */}
       <div className="p-1 flex-center">
-        <div className="w-7xl flex justify-between items-end">
+        <div className="w-7xl flex justify-between items-end px-10">
 
           {/* LEFT */}
           <div className='space-y-6'>
