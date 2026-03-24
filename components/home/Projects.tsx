@@ -199,6 +199,11 @@ const Projects = () => {
             </div>
           ))}
         </div>
+        <div className="py-20 flex-center">
+          <Link href="/projects" className="text-green-500 uppercase tracking-[8px] text-sm font-medium hover:underline">
+            View All Projects
+          </Link>
+        </div>
       </div>
     </div>
   );
