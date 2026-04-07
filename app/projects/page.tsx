@@ -8,6 +8,12 @@ import { BsArrowLeft } from "react-icons/bs";
 const Page = () => {
   const projects = [
     {
+      title: "Nexus",
+      tag: "Metaverse | Hero Exploration",
+      img: "/projects/thumb/nexus.png",
+      link: "/projects/nexus",
+    },
+    {
       title: "Lumino",
       tag: "Hero Exploration",
       img: "/projects/thumb/lumino.png",
