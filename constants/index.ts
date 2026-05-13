@@ -65,7 +65,7 @@ export const links = [
 
 export const projects = [
   {
-    color: "#dc00c9",
+    color: "#d223c3ff",
     title: "LotusFlow",
     mini_title: "AI-Powered React Component Generator",
     description: "AI-powered tool to generate React components just from text prompts.",
@@ -147,7 +147,7 @@ export const projects = [
     ],
   },
   {
-    color: "#8c00ff",
+    color: "#b861ffff",
     title: "Brainwave",
     mini_title: "Modern & Responsive SaaS Landing Page",
     description:
@@ -176,7 +176,7 @@ export const projects = [
     ],
   },
   {
-    color: "#1010a0",
+    color: "#3c87b9ff",
     title: "CalHabit",
     mini_title: "Habit tracking web app",
     description:

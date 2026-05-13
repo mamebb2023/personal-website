@@ -22,6 +22,7 @@ const Projects = () => {
     { top: 20, left: 10 },
     { top: 75, left: 20 },
   ]
+
   useEffect(() => {
     const split = new SplitText("#projects-text", {
       type: "chars",
@@ -192,7 +193,6 @@ const Projects = () => {
                 {/* images */}
                 <div className="flex justify-between">
                   <p className="">{project.mini_title}</p>
-
                   <div className="flex gap-2 items-center" />
                 </div>
               </div>

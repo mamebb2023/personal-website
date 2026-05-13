@@ -9,7 +9,8 @@ interface LotusProps {
   gradient?: string;
   petalCount?: number;
   animatePetals?: boolean;
-  dispayDelay?: number;
+  displayDelay?: number;
+  isStatic?: boolean;
 }
 
 const Lotus: React.FC<LotusProps> = ({
@@ -17,7 +18,8 @@ const Lotus: React.FC<LotusProps> = ({
   gradient = "bg-gradient-to-b from-emerald-500 via-green-500/50 to-transparent",
   petalCount = 7,
   animatePetals = true,
-  dispayDelay = 0
+  displayDelay = 0,
+  isStatic = false
 }) => {
   const centerIndex = Math.floor(petalCount / 2);
   const angleSpread = 150;
@@ -51,7 +53,7 @@ const Lotus: React.FC<LotusProps> = ({
   };
 
   useEffect(() => {
-    if (!animatePetals) return;
+    if (!animatePetals || isStatic) return;
 
     const interval = setInterval(() => {
       petalRefs.current.forEach((el, i) => {
@@ -77,17 +79,17 @@ const Lotus: React.FC<LotusProps> = ({
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [animatePetals, petals]);
+  }, [animatePetals, petals, isStatic]);
 
   return (
     <div className="relative flex items-center justify-center">
-      {petals.map((_, index) => (
+      {petals.map((petal, index) => (
         <motion.div
           key={index}
           custom={index}
-          initial="hidden"
-          animate="visible"
-          variants={petalVariants}
+          initial={isStatic ? false : "hidden"}
+          animate={isStatic ? false : "visible"}
+          variants={isStatic ? undefined : petalVariants}
           ref={(el) => {
             petalRefs.current[index] = el;
           }}
@@ -95,6 +97,10 @@ const Lotus: React.FC<LotusProps> = ({
           style={{
             clipPath: "ellipse(50% 50% at 50% 50%)",
             transformOrigin: "center bottom",
+            ...(isStatic && {
+              opacity: petal.opacity,
+              transform: `rotate(${petal.angle}deg) scaleY(1)`,
+            }),
           }}
         />
       ))}
