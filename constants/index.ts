@@ -18,11 +18,11 @@ export const name = [
 ];
 
 export const socials = [
-  {
-    name: "X",
-    color: "#181717",
-    link: "https://x.com/monur2025",
-  },
+  // {
+  //   name: "X",
+  //   color: "#181717",
+  //   link: "https://x.com/monur2025",
+  // },
   {
     name: "Github",
     color: "#181717",
