@@ -3,7 +3,7 @@
 import Header from "@/components/home/Header";
 import Hero from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
-import Testimonials from "@/components/home/Testimonials";
+// import Testimonials from "@/components/home/Testimonials";
 import React, { useEffect } from "react";
 import { motion } from "framer-motion"
 import Lotus from "@/components/shared/Lotus";
@@ -159,7 +159,7 @@ const Page = () => {
             </div>
           </div>
           <Projects />
-          <Testimonials />
+          {/* <Testimonials /> */}
         </div>
         <div className="h-[50vh] bg-white" />
         <Footer />
@@ -270,8 +270,6 @@ const Page = () => {
                   </div>
                 </div>
 
-
-
                 <div className="relative h-full flex flex-col justify-end text-white p-4">
                   <div
                     className="size-10 rounded-lg flex-center p-1 mb-1"
@@ -288,6 +286,7 @@ const Page = () => {
                   <div className="flex flex-wrap gap-2 py-2">
                     {p.features.slice(0, 3).map((f, i) => (
                       <div
+                        key={i}
                         className="shrink-0 text-xs px-2 py-1 rounded-full"
                         style={{ border: `1px solid ${p.color}`, color: p.color }}
                       >

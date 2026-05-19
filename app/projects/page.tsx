@@ -8,8 +8,14 @@ import { BsArrowLeft } from "react-icons/bs";
 const Page = () => {
   const projects = [
     {
+      title: "Nova",
+      tag: "Hero Exploration",
+      img: "/projects/thumb/nova.png",
+      link: "/projects/nova",
+    },
+    {
       title: "Nexus",
-      tag: "Metaverse | Hero Exploration",
+      tag: "Hero Exploration",
       img: "/projects/thumb/nexus.png",
       link: "/projects/nexus",
     },
@@ -89,7 +95,7 @@ const Page = () => {
           <Link
             key={index}
             href={project.link}
-            className="group cursor-pointer border border-gray-500/20 rounded-2xl p-2 hover:border-green-500/40 transition-all backdrop-blur-sm"
+            className="group cursor-pointer border border-gray-500/20 rounded-2xl p-2 hover:border-green-500/40 transition-all backdrop-blur-sm bg-white/30"
           >
             {/* Image */}
             <div className="relative w-full h-[180px] md:h-[260px] rounded-xl overflow-hidden bg-neutral-100">
@@ -102,12 +108,12 @@ const Page = () => {
             </div>
 
             {/* Content */}
-            <div className="mt-5 flex items-center justify-between">
+            <div className="mt-3 flex items-center justify-between px-3">
               <div>
                 <h2 className="text-lg md:text-xl font-medium tracking-tight">
                   {project.title}
                 </h2>
-                <p className="text-md text-black/80 mt-1">
+                <p className="text-md text-black/80">
                   {project.tag}
                 </p>
               </div>

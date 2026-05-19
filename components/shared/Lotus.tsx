@@ -45,7 +45,7 @@ const Lotus: React.FC<LotusProps> = ({
         rotate: petals[i].angle,
         transition: {
           duration: 1,
-          delay: distance * 0.15,
+          delay: displayDelay + distance * 0.15,
           ease: "easeInOut",
         },
       };
