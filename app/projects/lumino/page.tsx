@@ -39,7 +39,7 @@ const fadeUp: Variants = {
 
 export default function Lumino() {
   return (
-    <div className="relative h-screen overflow-hidden flex flex-col justify-between bg-[url('/projects/nature-cloud.jpg')] bg-cover bg-center text-white">
+    <div className="relative h-screen overflow-hidden flex flex-col justify-between bg-[url('/projects/nature-cloud.webp')] bg-cover bg-center text-white">
       <div className="absolute inset-0 bg-black/25"></div>
       {/* <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2 w-[600px] h-[500px] opacity-50 blur-3xl bg-white rounded-full" /> */}
       <div className="flex flex-col gap-10">

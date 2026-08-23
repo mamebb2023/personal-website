@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 
 interface LotusProps {
@@ -25,14 +25,19 @@ const Lotus: React.FC<LotusProps> = ({
   const angleSpread = 150;
   const startAngle = -angleSpread / 2;
 
-  const petals = Array.from({ length: petalCount }, (_, i) => {
-    const angle = startAngle + (i * angleSpread) / (petalCount - 1);
-    const distanceFromCenter = Math.abs(i - centerIndex);
-    const opacity = 0.9 - distanceFromCenter * 0.2;
-    return { angle, opacity, distanceFromCenter };
-  });
+  const petals = useMemo(
+    () =>
+      Array.from({ length: petalCount }, (_, i) => {
+        const angle = startAngle + (i * angleSpread) / (petalCount - 1);
+        const distanceFromCenter = Math.abs(i - centerIndex);
+        const opacity = 0.9 - distanceFromCenter * 0.2;
+        return { angle, opacity, distanceFromCenter };
+      }),
+    [petalCount]
+  );
 
   const petalRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   // ✅ Animate from center outward
   const petalVariants: Variants = {
@@ -55,7 +60,10 @@ const Lotus: React.FC<LotusProps> = ({
   useEffect(() => {
     if (!animatePetals || isStatic) return;
 
-    const interval = setInterval(() => {
+    let inView = false;
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    const startFlicker = () => {
       petalRefs.current.forEach((el, i) => {
         if (!el) return;
 
@@ -76,13 +84,40 @@ const Lotus: React.FC<LotusProps> = ({
           delay: 0.5 + i * 0.1,
         });
       });
-    }, 2000);
+    };
 
-    return () => clearInterval(interval);
+    const syncInterval = () => {
+      const shouldRun = inView && !document.hidden;
+      if (shouldRun && interval === null) {
+        interval = setInterval(startFlicker, 2000);
+      } else if (!shouldRun && interval !== null) {
+        clearInterval(interval);
+        interval = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        syncInterval();
+      },
+      { threshold: 0 }
+    );
+    if (rootRef.current) observer.observe(rootRef.current);
+
+    const onVisibility = () => syncInterval();
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (interval !== null) clearInterval(interval);
+      petalRefs.current.forEach((el) => el && gsap.killTweensOf(el));
+    };
   }, [animatePetals, petals, isStatic]);
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div ref={rootRef} className="relative flex items-center justify-center">
       {petals.map((petal, index) => (
         <motion.div
           key={index}

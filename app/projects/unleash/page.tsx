@@ -40,7 +40,7 @@ const fadeUp: Variants = {
 
 export default function HeroSection() {
   return (
-    <div className="relative h-screen overflow-hidden flex flex-col justify-between bg-[url('/projects/horse-image.jpg')] bg-cover bg-center">
+    <div className="relative h-screen overflow-hidden flex flex-col justify-between bg-[url('/projects/horse-image.webp')] bg-cover bg-center">
 
       {/* HEADER */}
       <motion.div

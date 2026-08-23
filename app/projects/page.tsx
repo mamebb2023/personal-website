@@ -10,55 +10,55 @@ const Page = () => {
     {
       title: "Nova",
       tag: "Hero Exploration",
-      img: "/projects/thumb/nova.png",
+      img: "/projects/thumb/nova.webp",
       link: "/projects/nova",
     },
     {
       title: "Nexus",
       tag: "Hero Exploration",
-      img: "/projects/thumb/nexus.png",
+      img: "/projects/thumb/nexus.webp",
       link: "/projects/nexus",
     },
     {
       title: "Lumino",
       tag: "Hero Exploration",
-      img: "/projects/thumb/lumino.png",
+      img: "/projects/thumb/lumino.webp",
       link: "/projects/lumino",
     },
     {
       title: "Unleash",
       tag: "Hero Exploration",
-      img: "/projects/thumb/unleash.png",
+      img: "/projects/thumb/unleash.webp",
       link: "/projects/unleash",
     },
     {
       title: "LotusFlow",
       tag: "AI-Powered React Component Generator",
-      img: "/assets/lotusflow/lotusflow-1.png",
+      img: "/assets/lotusflow/lotusflow-1.webp",
       link: "https://lotusflow.vercel.app/",
     },
     {
       title: "WeMD Africa",
       tag: "Online Dermatology Clinic",
-      img: "/assets/wemd/wemd-1.jpg",
+      img: "/assets/wemd/wemd-1.webp",
       link: "wemd-africa.vercel.app",
     },
     {
       title: "SanAI",
       tag: "Your Personal AI Doctor",
-      img: "/assets/sanai/sanai-1.png",
+      img: "/assets/sanai/sanai-1.webp",
       link: "https://sanai-.vercel.app",
     },
     {
       title: "CalHabit",
       tag: "Habit tracking web app",
-      img: "/assets/calhabit/calhabit-1.png",
+      img: "/assets/calhabit/calhabit-1.webp",
       link: "https://cal-habit.vercel.app",
     },
     {
       title: "Brainwave",
       tag: "Modern & Responsive SaaS Landing Page",
-      img: "/assets/brainwave/brainwave-1.png",
+      img: "/assets/brainwave/brainwave-1.webp",
       link: "https://brainwave-iota-five-26.vercel.app/",
     },
   ];
@@ -103,6 +103,7 @@ const Page = () => {
                 src={project.img}
                 alt={project.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>

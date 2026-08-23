@@ -28,93 +28,92 @@ const Projects = () => {
   ];
 
   useEffect(() => {
-    // Split text animation
-    const split = new SplitText("#projects-text", {
-      type: "chars",
-    });
-    splitRef.current = split;
+    const ctx = gsap.context(() => {
+      // Split text animation
+      const split = new SplitText("#projects-text", {
+        type: "chars",
+      });
+      splitRef.current = split;
 
-    gsap.set(split.chars, {
-      filter: "blur(10px)",
-      scale: 1.5,
-      opacity: 0,
-      willChange: "filter, opacity, transform",
-      force3D: true,
-    });
+      gsap.set(split.chars, {
+        filter: "blur(10px)",
+        scale: 1.5,
+        opacity: 0,
+        willChange: "filter, opacity, transform",
+        force3D: true,
+      });
 
-    // Title animation with optimized settings
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: "#projects-title-container",
+      // Title animation with optimized settings
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#projects-title-container",
+          start: "top top",
+          end: "bottom center",
+          pin: true,
+          scrub: 1, // Add slight smoothing (0.5-2 recommended)
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      }).to(split.chars, {
+        filter: "blur(0px)",
+        scale: 1,
+        opacity: 1,
+        stagger: 0.05,
+        ease: "none",
+        duration: 0.5,
+        force3D: true,
+      });
+
+      // Pin distributed images container with smoother scrub
+      ScrollTrigger.create({
+        trigger: "#projects-container",
         start: "top top",
-        end: "bottom center",
-        pin: true,
-        scrub: 1, // Add slight smoothing (0.5-2 recommended)
+        end: "bottom bottom",
+        pin: "#distributed-images-container",
+        pinSpacing: false,
         anticipatePin: 1,
+        snap: {
+          snapTo: 1 / (projects.length - 1),
+          duration: { min: 0.2, max: 0.5 },
+          ease: "power1.inOut", // Changed to smoother easing
+          delay: 0.1,
+        },
+        scrub: 1, // Increased from true for smoother scrolling
         invalidateOnRefresh: true,
-      },
-    }).to(split.chars, {
-      filter: "blur(0px)",
-      scale: 1,
-      opacity: 1,
-      stagger: 0.05,
-      ease: "none",
-      duration: 0.5,
-      force3D: true,
-    });
+      });
 
-    // Pin distributed images container with smoother scrub
-    ScrollTrigger.create({
-      trigger: "#projects-container",
-      start: "top top",
-      end: "bottom bottom",
-      pin: "#distributed-images-container",
-      pinSpacing: false,
-      anticipatePin: 1,
-      snap: {
-        snapTo: 1 / (projects.length - 1),
-        duration: { min: 0.2, max: 0.5 },
-        ease: "power1.inOut", // Changed to smoother easing
-        delay: 0.1,
-      },
-      scrub: 1, // Increased from true for smoother scrolling
-      invalidateOnRefresh: true,
-    });
+      // Optimize distributed images animation
+      const distributedImages = gsap.utils.toArray<HTMLElement>(".distributed-img");
 
-    // Optimize distributed images animation
-    const distributedImages = document.querySelectorAll(".distributed-img");
+      distributedImages.forEach((box) => {
+        const track = box.querySelector(".distributed-track");
 
-    distributedImages.forEach((box) => {
-      const track = box.querySelector(".distributed-track");
+        if (track) {
+          // Set initial transform for better performance
+          gsap.set(track, {
+            force3D: true,
+            willChange: "transform",
+          });
 
-      if (track) {
-        // Set initial transform for better performance
-        gsap.set(track, {
-          force3D: true,
-          willChange: "transform",
-        });
-
-        gsap.to(track, {
-          yPercent: -81,
-          ease: "none",
-          force3D: true,
-          scrollTrigger: {
-            trigger: "#projects-container",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1, // Increased from true for smoother scrolling
-            invalidateOnRefresh: true,
-          },
-        });
-      }
+          gsap.to(track, {
+            yPercent: -81,
+            ease: "none",
+            force3D: true,
+            scrollTrigger: {
+              trigger: "#projects-container",
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1, // Increased from true for smoother scrolling
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+      });
     });
 
     // Cleanup function
     return () => {
-      if (splitRef.current) {
-        splitRef.current.revert();
-      }
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ctx.revert();
     };
   }, []);
 
@@ -168,10 +167,10 @@ const Projects = () => {
                     src={project.images[imgIndex + 1]}
                     width={1000}
                     height={1000}
+                    sizes="310px"
                     alt={`${project.title} image ${imgIndex + 1}`}
                     className="block w-full h-full object-cover rounded-lg shadow-xl"
                     draggable={false}
-                    priority={projectIndex === 0}
                     loading={projectIndex === 0 ? "eager" : "lazy"}
                   />
                 ))}
@@ -220,6 +219,7 @@ const Projects = () => {
                     src={project.logo}
                     width={1000}
                     height={1000}
+                    sizes="130px"
                     alt={`${index} ${project.title} image`}
                     className="absolute -bottom-1/4 -right-1/5 w-[130px] opacity-50"
                     draggable={false}
@@ -229,6 +229,7 @@ const Projects = () => {
                     src={project.images[0]}
                     width={1000}
                     height={1000}
+                    sizes="(max-width: 768px) 90vw, 500px"
                     alt={`${index} ${project.title} image`}
                     className="relative w-[500px] rounded-lg shadow-xl"
                     draggable={false}

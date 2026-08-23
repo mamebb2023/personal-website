@@ -4,36 +4,47 @@ import { links } from "@/constants";
 import gsap from "gsap";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { useWindowScroll } from "react-use";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
 
 const Header = () => {
-  const { y } = useWindowScroll();
   const navContainerRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
   const [isNavVisible, setIsNavVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   const lenis = useLenis();
 
   useEffect(() => {
-    // Avoid initial render issues
-    let newVisible = isNavVisible;
+    let ticking = false;
 
-    if (y === 0) {
-      newVisible = true;
-    } else if (y > lastScrollY) {
-      newVisible = false; // scrolling down
-    } else if (y < lastScrollY) {
-      newVisible = true; // scrolling up
-    }
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        let newVisible = isNavVisible;
 
-    if (newVisible !== isNavVisible) {
-      setIsNavVisible(newVisible);
-    }
+        if (y === 0) {
+          newVisible = true;
+        } else if (y > lastScrollY.current) {
+          newVisible = false; // scrolling down
+        } else if (y < lastScrollY.current) {
+          newVisible = true; // scrolling up
+        }
 
-    setLastScrollY(y);
-  }, [y]);
+        if (newVisible !== isNavVisible) {
+          setIsNavVisible(newVisible);
+        }
+
+        lastScrollY.current = y;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNavVisible]);
 
   useEffect(() => {
     gsap.to(navContainerRef.current, {

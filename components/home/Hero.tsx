@@ -14,35 +14,39 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
 
   useEffect(() => {
-    gsap.to("#lotus", {
-      right: "50%",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    })
+    let text: SplitType | null = null;
 
-    const text = new SplitType(".hero-about-text", {
-      types: "chars,words",
-    })
+    const ctx = gsap.context(() => {
+      gsap.to("#lotus", {
+        right: "50%",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      })
 
-    gsap.to(text.chars, {
-      color: "white",
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top top",
-        end: "bottom+=1500 bottom",
-        scrub: 1,
-        pin: true,
-      },
-    })
+      text = new SplitType(".hero-about-text", {
+        types: "chars,words",
+      })
+
+      gsap.to(text.chars, {
+        color: "white",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top top",
+          end: "bottom+=1500 bottom",
+          scrub: 1,
+          pin: true,
+        },
+      })
+    });
 
     return () => {
-      text.revert();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ctx.revert();
+      text?.revert();
     };
   }, [])
 

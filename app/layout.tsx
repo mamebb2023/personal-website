@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ReactLenis from "lenis/react";
 import Script from "next/script";
+import ScrollSync from "@/components/shared/ScrollSync";
 
 export const metadata: Metadata = {
   title: "Mohammednur | Web Designer and Developer",
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/favicon.png", sizes: "any" }],
-    shortcut: "/favicon.png",
+    icon: [{ url: "/favicon.webp", sizes: "any" }],
+    shortcut: "/favicon.webp",
   },
 };
 
@@ -55,7 +56,10 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <ReactLenis root>{children}</ReactLenis>
+        <ReactLenis root>
+          <ScrollSync />
+          {children}
+        </ReactLenis>
       </body>
     </html>
   );

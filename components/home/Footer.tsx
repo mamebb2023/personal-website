@@ -11,7 +11,7 @@ import Lotus from "../shared/Lotus";
 
 const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   // Name text animation with smoother easing
   const letterVariants = {
@@ -36,7 +36,7 @@ const Footer = () => {
         ref={containerRef}
         className="relative h-full w-full flex items-center justify-start"
       >
-        <Lotus />
+        <Lotus animatePetals />
       </div>
 
       {/* Foreground content */}
@@ -65,9 +65,7 @@ const Footer = () => {
                 key={index}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={
-                  isInView
-                    ? { scale: 1, opacity: 1 }
-                    : { scale: 0, opacity: 0 }
+                  isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }
                 }
                 transition={{
                   delay: isInView ? 0.7 + index * 0.15 : 0,
@@ -112,9 +110,7 @@ const Footer = () => {
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={
-                    isInView
-                      ? { opacity: 1, y: 0 }
-                      : { opacity: 0, y: 10 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
                   }
                   transition={{
                     delay: isInView ? 0.3 + 0.15 * index : 0,
@@ -132,11 +128,7 @@ const Footer = () => {
         <motion.div
           className="p-4 flex justify-end text-sm"
           initial={{ opacity: 0, y: 20 }}
-          animate={
-            isInView
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: 20 }
-          }
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{
             delay: isInView ? 1.2 : 0,
             duration: 0.5,
